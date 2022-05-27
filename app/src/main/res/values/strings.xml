@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">FreteFacil</string>
+
+    <string name="fretes">Fretes</string>
+    <string name="veículos">Veículos</string>
+    <string name="bemvindo">Bem Vindo Douglas</string>
 </resources>
