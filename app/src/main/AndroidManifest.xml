@@ -11,7 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FreteFacil">
         <activity
-            android:name="br.com.douglasti.fretefacil.impl.view.MenuActivity"
+            android:name=".impl.view.VehicleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".impl.view.MenuActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
