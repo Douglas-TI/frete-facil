@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".impl.view.MenuActivity">
+    tools:context=".mvp.view.MenuActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -30,7 +30,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/orange"
-            android:onClick="openVehicleActivity"
             android:text="@string/veículos" />
 
         <LinearLayout
@@ -56,25 +55,13 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_welcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/bemvindo"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="281dp"
         android:layout_height="132dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_logo" />
+        app:srcCompat="@drawable/frete" />
 </androidx.constraintlayout.widget.ConstraintLayout>

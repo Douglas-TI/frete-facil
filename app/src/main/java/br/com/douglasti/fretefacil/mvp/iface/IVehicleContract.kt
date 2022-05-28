@@ -1,4 +1,4 @@
-package br.com.douglasti.fretefacil.iface
+package br.com.douglasti.fretefacil.mvp.iface
 
 interface IVehicleContract {
 

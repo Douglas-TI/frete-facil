@@ -4,4 +4,6 @@
     <string name="fretes">Fretes</string>
     <string name="veículos">Veículos</string>
     <string name="bemvindo">Bem Vindo, Douglas.</string>
+    <string name="nome">Insira seu nome</string>
+    <string name="entrar">Entrar</string>
 </resources>

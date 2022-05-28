@@ -11,13 +11,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FreteFacil">
         <activity
-            android:name=".impl.view.VehicleActivity"
-            android:exported="false" />
+            android:name=".mvp.view.vehicle.VehicleAddActivity"
+            android:exported="false"
+            android:parentActivityName=".mvp.view.vehicle.VehicleManageActivity"
+            android:label="" />
         <activity
-            android:name=".impl.view.MenuActivity"
+            android:name=".mvp.view.vehicle.VehicleManageActivity"
+            android:exported="false"
+            android:parentActivityName=".mvp.view.MenuActivity"
+            android:label=""/>
+        <activity
+            android:name=".mvp.view.MenuActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

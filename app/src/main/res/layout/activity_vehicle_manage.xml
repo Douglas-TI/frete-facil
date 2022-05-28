@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".impl.view.VehicleActivity">
+    tools:context=".mvp.view.vehicle.VehicleManageActivity">
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
+        android:id="@+id/ll_vehicles"
         android:layout_width="0dp"
         android:layout_height="236dp"
         android:layout_marginStart="8dp"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent"></LinearLayout>
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/ib_add_vehicle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -29,7 +29,7 @@
         android:backgroundTint="@color/orange"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/ll_vehicles"
         app:srcCompat="@drawable/ic_baseline_add_32" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,7 @@
 package br.com.douglasti.fretefacil.modules
 
-import br.com.douglasti.fretefacil.iface.IMenuContract
-import br.com.douglasti.fretefacil.impl.presenter.MenuPresenter
+import br.com.douglasti.fretefacil.mvp.iface.IMenuContract
+import br.com.douglasti.fretefacil.mvp.presenter.MenuPresenter
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

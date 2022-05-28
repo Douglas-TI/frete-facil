@@ -1,11 +1,12 @@
-package br.com.douglasti.fretefacil.impl.view
+package br.com.douglasti.fretefacil.mvp.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import br.com.douglasti.fretefacil.databinding.ActivityMenuBinding
-import br.com.douglasti.fretefacil.iface.IMenuContract
+import br.com.douglasti.fretefacil.mvp.iface.IMenuContract
+import br.com.douglasti.fretefacil.mvp.view.vehicle.VehicleAddActivity
+import br.com.douglasti.fretefacil.mvp.view.vehicle.VehicleManageActivity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -21,9 +22,18 @@ class MenuActivity : AppCompatActivity(), IMenuContract.View {
         super.onCreate(savedInstanceState)
         bind = ActivityMenuBinding.inflate(layoutInflater)
         setContentView(bind.root)
+
+        loadView()
     }
 
-    @Suppress("UNUSED_PARAMETER")
-    fun openVehicleActivity(view: View) =
-        startActivity(Intent(this, VehicleActivity::class.java))
+    private fun loadView() {
+        setOpenVehicleActivity()
+
+        setTitle("Bem vindo, Douglas.")
+    }
+
+    private fun setOpenVehicleActivity() {
+        val intent = Intent(this, VehicleManageActivity::class.java)
+        bind.btVehicle.setOnClickListener { startActivity(intent) }
+    }
 }
