@@ -4,9 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import br.com.douglasti.fretefacil.databinding.ActivityVehicleManageBinding
-import br.com.douglasti.fretefacil.mvp.iface.IVehicleContract
+import br.com.douglasti.fretefacil.mvp.iface.IVehicleManageContract
 
-class VehicleManageActivity : AppCompatActivity(), IVehicleContract.View {
+class VehicleManageActivity : AppCompatActivity(), IVehicleManageContract.View {
 
     private lateinit var bind: ActivityVehicleManageBinding
 

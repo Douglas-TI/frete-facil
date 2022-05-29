@@ -6,4 +6,11 @@
     <string name="bemvindo">Bem Vindo, Douglas.</string>
     <string name="nome">Insira seu nome</string>
     <string name="entrar">Entrar</string>
+    <string name="marca">Marca</string>
+    <string name="modelo">Modelo</string>
+    <string name="kml">KM/L</string>
+    <string name="custosManutencao">Custos de Manutenção</string>
+    <string name="a_cada">a cada</string>
+    <string name="meses">meses</string>
+    <string name="save">Salvar</string>
 </resources>
