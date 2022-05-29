@@ -6,6 +6,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import br.com.douglasti.fretefacil.R
 import br.com.douglasti.fretefacil.databinding.ActivityVehicleAddBinding
+import br.com.douglasti.fretefacil.hilt.vehicleadd.IVehicleAddFactory
 import br.com.douglasti.fretefacil.mvp.iface.IVehicleAddContract
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -14,8 +15,11 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class VehicleAddActivity : AppCompatActivity(), IVehicleAddContract.View {
 
+    @Inject
+    protected lateinit var vehicleAddFactory: IVehicleAddFactory
+    protected lateinit var presenter: IVehicleAddContract.Presenter
+
     private lateinit var bind: ActivityVehicleAddBinding
-    @Inject protected lateinit var presenter: IVehicleAddContract.Presenter
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_save, menu)
@@ -39,7 +43,7 @@ class VehicleAddActivity : AppCompatActivity(), IVehicleAddContract.View {
     }
 
     private fun loadView() {
-
+        presenter = vehicleAddFactory.createPresenter(this)
     }
 
     override fun getStringEtBrand() = bind.etBrand.text.toString()
