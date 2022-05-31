@@ -21,8 +21,9 @@
             android:id="@+id/tv_marca"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/marca"
-            android:labelFor="@id/et_brand" />
+            android:labelFor="@id/et_brand"
+            android:text="@string/brand"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et_brand"
@@ -37,7 +38,8 @@
             android:id="@+id/tv_modelo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/modelo" />
+            android:text="@string/model"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et_model"
@@ -46,28 +48,67 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:autofillHints=""
-            android:theme="@style/EditTextTheme"/>/>
+            android:theme="@style/EditTextTheme"/>
 
         <TextView
-            android:id="@+id/tv_kml"
+            android:id="@+id/tv_fuels"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/kml" />
+            android:text="@string/fuels"
+            android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/et_kml"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:autofillHints=""
-            android:theme="@style/EditTextTheme"/>/>
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <EditText
+                android:id="@+id/et_kml"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/kml"
+                android:inputType="textPersonName"
+                android:theme="@style/EditTextTheme" />
+
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:backgroundTint="@color/orange"
+                app:srcCompat="@drawable/ic_baseline_add_32"
+                android:contentDescription="@string/btAdd" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@color/light_gray" />
 
         <TextView
             android:id="@+id/tv_custos_manutencao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/custosManutencao" />
+            android:text="@string/custosManutencao"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/descriptionCost"
+            android:inputType="textPersonName"
+            android:autofillHints="" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -77,39 +118,41 @@
             <EditText
                 android:id="@+id/et_maitenance_cost"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName"
                 android:autofillHints=""
-                android:theme="@style/EditTextTheme"/>/>
-
-            <TextView
-                android:id="@+id/tv_a_cada"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.3"
-                android:gravity="center"
-                android:text="@string/a_cada" />
+                android:ems="10"
+                android:hint="@string/value"
+                android:inputType="textPersonName"
+                android:theme="@style/EditTextTheme" />
 
             <EditText
                 android:id="@+id/et_maitenance_cost_months"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName"
                 android:autofillHints=""
-                android:theme="@style/EditTextTheme"/>
+                android:ems="10"
+                android:hint="@string/period"
+                android:inputType="textPersonName"
+                android:theme="@style/EditTextTheme" />
 
-            <TextView
-                android:id="@+id/tv_meses"
+            <ImageButton
+                android:id="@+id/imageButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1.3"
-                android:gravity="center"
-                android:text="@string/meses" />
+                android:layout_weight="1.5"
+                android:backgroundTint="@color/orange"
+                app:srcCompat="@drawable/ic_baseline_add_32"
+                android:contentDescription="@string/btAdd" />
+
         </LinearLayout>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@color/light_gray" />
+
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,16 +1,23 @@
 <resources>
     <string name="app_name">FreteFacil</string>
 
-    <string name="fretes">Fretes</string>
-    <string name="veículos">Veículos</string>
-    <string name="bemvindo">Bem Vindo, Douglas.</string>
-    <string name="nome">Insira seu nome</string>
-    <string name="entrar">Entrar</string>
-    <string name="marca">Marca</string>
-    <string name="modelo">Modelo</string>
-    <string name="kml">KM/L</string>
+    <string name="freights">Fretes</string>
+    <string name="vehicles">Veículos</string>
+    <string name="welcome">Bem Vindo, Douglas.</string>
+    <string name="insert_name">Insira seu nome</string>
+    <string name="enter">Entrar</string>
+    <string name="brand">Marca</string>
+    <string name="model">Modelo</string>
+    <string name="fuels">Combustíveis</string>
     <string name="custosManutencao">Custos de Manutenção</string>
-    <string name="a_cada">a cada</string>
-    <string name="meses">meses</string>
+    <string name="period">Período(meses)</string>
+    <string name="value">Valor</string>
     <string name="save">Salvar</string>
+    <string name="descriptionCost">Descrição do Custo</string>
+    <string name="type">Tipo</string>
+    <string name="kml">KM/L</string>
+    <string name="requiredField">Campo Obrigatório</string>
+    <string name="btAdd">Botão Adicionar</string>
+
+    <string name="vehicleRegistration">Cadastro de Veículo</string>
 </resources>

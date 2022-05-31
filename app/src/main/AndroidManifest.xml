@@ -14,7 +14,7 @@
             android:name=".mvp.view.vehicle.VehicleAddActivity"
             android:exported="false"
             android:parentActivityName=".mvp.view.vehicle.VehicleManageActivity"
-            android:label="" />
+            android:label="@string/vehicleRegistration" />
         <activity
             android:name=".mvp.view.vehicle.VehicleManageActivity"
             android:exported="false"

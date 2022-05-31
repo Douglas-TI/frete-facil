@@ -28,9 +28,9 @@ class VehicleAddActivity : AppCompatActivity(), IVehicleAddContract.View {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id: Int = item.itemId
-        /*if (id == R.id.bt_save){
+        if (id == R.id.bt_save)
+            presenter.validateSave()
 
-        }*/
         return super.onOptionsItemSelected(item)
     }
 
@@ -47,12 +47,17 @@ class VehicleAddActivity : AppCompatActivity(), IVehicleAddContract.View {
     }
 
     override fun getStringEtBrand() = bind.etBrand.text.toString()
+    override fun setErrorEtBrand(error: String) { bind.etBrand.error = error }
 
     override fun getStringEtModel() = bind.etModel.text.toString()
+    override fun setErrorEtModel(error: String) { bind.etModel.error = error }
 
     override fun getStringEtKml() = bind.etKml.text.toString()
+    override fun setErrorEtKml(error: String) { bind.etKml.error = error }
 
     override fun getStringEtMaitenanceCost() = bind.etMaitenanceCost.text.toString()
+    override fun setErrorEtMaitenanceCost(error: String) { bind.etMaitenanceCost.error = error }
 
     override fun getStringEtMaitenanceCostMonths() = bind.etMaitenanceCostMonths.text.toString()
+    override fun setErrorEtMaitenanceCostMonths(error: String) { bind.etMaitenanceCostMonths.error = error }
 }
