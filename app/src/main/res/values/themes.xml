@@ -18,6 +18,16 @@
         <item name="colorControlNormal">@color/gray</item>
         <item name="colorControlActivated">@color/orange</item>
         <item name="android:textColorHighlight">@color/orange</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="TextViewTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="TextViewThemeLabel" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
 </resources>

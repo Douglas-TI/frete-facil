@@ -10,5 +10,8 @@
 
     <color name="orange">#D25412</color>
     <color name="light_gray">#DDDDDD</color>
+    <color name="medium_gray">#959494</color>
     <color name="gray">#5E5E5E</color>
+
+    <color name="red_error">#FF0000</color>
 </resources>

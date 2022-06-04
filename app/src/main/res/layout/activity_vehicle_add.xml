@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mvp.view.vehicle.VehicleAddActivity">
+    tools:context=".mvp.view.vehicle.vehicleAdd.VehicleAddActivity">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:labelFor="@id/et_brand"
             android:text="@string/brand"
-            android:textStyle="bold" />
+            android:theme="@style/TextViewThemeLabel" />
 
         <EditText
             android:id="@+id/et_brand"
@@ -39,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/model"
-            android:textStyle="bold" />
+            android:theme="@style/TextViewThemeLabel" />
 
         <EditText
             android:id="@+id/et_model"
@@ -51,11 +51,11 @@
             android:theme="@style/EditTextTheme"/>
 
         <TextView
-            android:id="@+id/tv_fuels"
+            android:id="@+id/tv_fuel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/fuels"
-            android:textStyle="bold" />
+            android:theme="@style/TextViewThemeLabel" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -63,13 +63,14 @@
             android:orientation="horizontal">
 
             <Spinner
-                android:id="@+id/spinner"
+                android:id="@+id/spinner_fuel_types"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:theme="@android:style/Theme.Holo.Light.DarkActionBar" />
 
             <EditText
-                android:id="@+id/et_kml"
+                android:id="@+id/et_fuel_kml"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -80,7 +81,7 @@
                 android:theme="@style/EditTextTheme" />
 
             <ImageButton
-                android:id="@+id/imageButton2"
+                android:id="@+id/ib_fuel_add"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
@@ -89,26 +90,65 @@
                 android:contentDescription="@string/btAdd" />
         </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
+        <TextView
+            android:id="@+id/tv_required_fuel"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:background="@color/light_gray" />
+            android:layout_height="wrap_content"
+            android:text="@string/required_fuel"
+            android:textColor="@color/red_error"
+            android:visibility="gone"
+            android:theme="@style/TextViewTheme" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_rv_header_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/medium_gray"
+                android:paddingStart="@dimen/margin_small"
+                android:paddingEnd="@dimen/margin_small"
+                android:text="@string/type"
+                android:theme="@style/TextViewTheme" />
+
+            <TextView
+                android:id="@+id/tv_rv_header_kml"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/medium_gray"
+                android:paddingStart="@dimen/margin_small"
+                android:paddingEnd="@dimen/margin_small"
+                android:text="@string/kml"
+                android:theme="@style/TextViewTheme"/>
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_fuel"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="@color/light_gray"
+            android:paddingStart="@dimen/margin_small"
+            android:paddingEnd="@dimen/margin_small" />
 
         <TextView
-            android:id="@+id/tv_custos_manutencao"
+            android:id="@+id/tv_maitenance_cost"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/custosManutencao"
-            android:textStyle="bold" />
+            android:text="@string/maitenance_cost"
+            android:textStyle="bold"
+            android:theme="@style/TextViewThemeLabel" />
 
-        <EditText
-            android:id="@+id/editTextTextPersonName2"
+        <Spinner
+            android:id="@+id/et_maitenance_type"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/descriptionCost"
-            android:inputType="textPersonName"
-            android:autofillHints="" />
+            android:layout_height="40dp"
+            android:autofillHints=""
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -138,7 +178,7 @@
                 android:theme="@style/EditTextTheme" />
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/ib_add_maitenance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
@@ -149,8 +189,9 @@
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_maitenance"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="120dp"
             android:background="@color/light_gray" />
 
     </LinearLayout>

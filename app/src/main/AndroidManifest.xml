@@ -11,10 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FreteFacil">
         <activity
-            android:name=".mvp.view.vehicle.VehicleAddActivity"
+            android:name=".mvp.view.vehicle.vehicleAdd.VehicleAddActivity"
             android:exported="false"
             android:parentActivityName=".mvp.view.vehicle.VehicleManageActivity"
-            android:label="@string/vehicleRegistration" />
+            android:label="@string/vehicle_registration" />
         <activity
             android:name=".mvp.view.vehicle.VehicleManageActivity"
             android:exported="false"

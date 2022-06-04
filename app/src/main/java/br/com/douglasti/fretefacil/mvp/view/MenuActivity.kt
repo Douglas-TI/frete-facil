@@ -5,13 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import br.com.douglasti.fretefacil.databinding.ActivityMenuBinding
 import br.com.douglasti.fretefacil.mvp.iface.IMenuContract
-import br.com.douglasti.fretefacil.mvp.view.vehicle.VehicleAddActivity
 import br.com.douglasti.fretefacil.mvp.view.vehicle.VehicleManageActivity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MenuActivity : AppCompatActivity(), IMenuContract.View {
+class MenuActivity : BaseAppCompactActivity(), IMenuContract.View {
 
     private lateinit var bind: ActivityMenuBinding
 
