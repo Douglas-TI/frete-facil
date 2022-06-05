@@ -1,4 +1,4 @@
-package br.com.douglasti.fretefacil.hilt.vehicleadd
+package br.com.douglasti.fretefacil.common.hilt.vehicleadd
 
 import br.com.douglasti.fretefacil.mvp.iface.contract.IVehicleAddContract
 import br.com.douglasti.fretefacil.mvp.presenter.vehicle.add.VehicleAddPresenter

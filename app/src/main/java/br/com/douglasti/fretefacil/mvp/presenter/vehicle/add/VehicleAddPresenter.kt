@@ -10,7 +10,7 @@ import br.com.douglasti.fretefacil.mvp.model.data.entities.Fuel
 import br.com.douglasti.fretefacil.mvp.model.data.entities.FuelConstant
 import br.com.douglasti.fretefacil.mvp.model.data.entities.Maitenance
 import br.com.douglasti.fretefacil.mvp.model.data.entities.Vehicle
-import br.com.douglasti.fretefacil.util.Constantes
+import br.com.douglasti.fretefacil.common.util.Constantes
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import dagger.hilt.android.qualifiers.ActivityContext

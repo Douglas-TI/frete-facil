@@ -8,11 +8,11 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.douglasti.fretefacil.R
 import br.com.douglasti.fretefacil.databinding.ActivityVehicleAddBinding
-import br.com.douglasti.fretefacil.hilt.vehicleadd.IVehicleAddFactory
+import br.com.douglasti.fretefacil.common.hilt.vehicleadd.IVehicleAddFactory
 import br.com.douglasti.fretefacil.mvp.iface.contract.IVehicleAddContract
 import br.com.douglasti.fretefacil.mvp.model.data.entities.Fuel
 import br.com.douglasti.fretefacil.mvp.view.BaseAppCompactActivity
-import br.com.douglasti.fretefacil.util.Constantes
+import br.com.douglasti.fretefacil.common.util.Constantes
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

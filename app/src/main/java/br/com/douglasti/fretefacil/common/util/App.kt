@@ -1,4 +1,4 @@
-package br.com.douglasti.fretefacil.util
+package br.com.douglasti.fretefacil.common.util
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

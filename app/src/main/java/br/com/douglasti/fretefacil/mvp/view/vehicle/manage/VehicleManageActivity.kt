@@ -6,7 +6,7 @@ import br.com.douglasti.fretefacil.databinding.ActivityVehicleManageBinding
 import br.com.douglasti.fretefacil.mvp.iface.contract.IVehicleManageContract
 import br.com.douglasti.fretefacil.mvp.view.BaseAppCompactActivity
 import br.com.douglasti.fretefacil.mvp.view.vehicle.add.VehicleAddActivity
-import br.com.douglasti.fretefacil.util.Constantes
+import br.com.douglasti.fretefacil.common.util.Constantes
 
 class VehicleManageActivity : BaseAppCompactActivity(), IVehicleManageContract.View {
 

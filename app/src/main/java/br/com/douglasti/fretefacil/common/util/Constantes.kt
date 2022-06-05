@@ -1,4 +1,4 @@
-package br.com.douglasti.fretefacil.util
+package br.com.douglasti.fretefacil.common.util
 
 enum class Constantes(val description: String, val value: Int) {
 

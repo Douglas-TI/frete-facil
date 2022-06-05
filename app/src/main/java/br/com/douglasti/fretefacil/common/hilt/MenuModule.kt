@@ -1,4 +1,4 @@
-package br.com.douglasti.fretefacil.hilt
+package br.com.douglasti.fretefacil.common.hilt
 
 import br.com.douglasti.fretefacil.mvp.iface.contract.IMenuContract
 import br.com.douglasti.fretefacil.mvp.presenter.MenuPresenter
