@@ -1,12 +1,15 @@
-package br.com.douglasti.fretefacil.mvp.presenter
+package br.com.douglasti.fretefacil.mvp.presenter.vehicle.add
 
 import android.content.Context
 import android.view.View
+import androidx.room.Room
 import br.com.douglasti.fretefacil.R
-import br.com.douglasti.fretefacil.mvp.iface.IVehicleAddContract
-import br.com.douglasti.fretefacil.mvp.model.entities.Fuel
-import br.com.douglasti.fretefacil.mvp.model.entities.Maitenance
-import br.com.douglasti.fretefacil.mvp.model.entities.Vehicle
+import br.com.douglasti.fretefacil.mvp.iface.contract.IVehicleAddContract
+import br.com.douglasti.fretefacil.mvp.model.data.AppDatabase
+import br.com.douglasti.fretefacil.mvp.model.data.entities.Fuel
+import br.com.douglasti.fretefacil.mvp.model.data.entities.FuelConstant
+import br.com.douglasti.fretefacil.mvp.model.data.entities.Maitenance
+import br.com.douglasti.fretefacil.mvp.model.data.entities.Vehicle
 import br.com.douglasti.fretefacil.util.Constantes
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
@@ -20,6 +23,16 @@ class VehicleAddPresenter @AssistedInject constructor(@Assisted val view: IVehic
     }
 
     private fun populateSpinnerFuel() {
+        val db = Room.databaseBuilder(context, AppDatabase::class.java, "database-name").build()
+        val fuelConstantTest = FuelConstant("Gasolina")
+
+        val t = Thread {
+            db.fuelConstantDao().insertAll(fuelConstantTest)
+            val fuelsConstant: List<FuelConstant> = db.fuelConstantDao().getAll()
+        }
+
+        t.start()
+
         val array = arrayOf("Gasolina", "Alcool", "Diesel")
         view.setArraySpinnerFuelType(array)
     }

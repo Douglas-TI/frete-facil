@@ -1,4 +1,4 @@
-package br.com.douglasti.fretefacil.mvp.view.vehicle.vehicleAdd
+package br.com.douglasti.fretefacil.mvp.view.vehicle.add
 
 import android.os.Bundle
 import android.view.Menu
@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.douglasti.fretefacil.R
 import br.com.douglasti.fretefacil.databinding.ActivityVehicleAddBinding
 import br.com.douglasti.fretefacil.hilt.vehicleadd.IVehicleAddFactory
-import br.com.douglasti.fretefacil.mvp.iface.IVehicleAddContract
-import br.com.douglasti.fretefacil.mvp.model.entities.Fuel
+import br.com.douglasti.fretefacil.mvp.iface.contract.IVehicleAddContract
+import br.com.douglasti.fretefacil.mvp.model.data.entities.Fuel
 import br.com.douglasti.fretefacil.mvp.view.BaseAppCompactActivity
 import br.com.douglasti.fretefacil.util.Constantes
 import dagger.hilt.android.AndroidEntryPoint
@@ -98,6 +98,6 @@ class VehicleAddActivity : BaseAppCompactActivity(), IVehicleAddContract.View {
     override fun getStringEtMaitenanceCost() = bind.etMaitenanceCost.text.toString()
     override fun setErrorEtMaitenanceCost(error: String) { bind.etMaitenanceCost.error = error }
 
-    override fun getStringEtMaitenanceCostMonths() = bind.etMaitenanceCostMonths.text.toString()
-    override fun setErrorEtMaitenanceCostMonths(error: String) { bind.etMaitenanceCostMonths.error = error }
+    override fun getStringEtMaitenanceFrequency() = bind.etMaitenanceCostMonths.text.toString()
+    override fun setErrorEtMaitenanceFrequency(error: String) { bind.etMaitenanceCostMonths.error = error }
 }

@@ -1,10 +1,9 @@
-package br.com.douglasti.fretefacil
+package br.com.douglasti.fretefacil.mvp.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import br.com.douglasti.fretefacil.databinding.ActivityMainBinding
-import br.com.douglasti.fretefacil.mvp.view.MenuActivity
 
 class MainActivity : AppCompatActivity() {
 

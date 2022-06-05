@@ -1,4 +1,4 @@
-package br.com.douglasti.fretefacil.mvp.iface
+package br.com.douglasti.fretefacil.mvp.iface.contract
 
 interface IMenuContract {
 

@@ -1,12 +1,11 @@
-package br.com.douglasti.fretefacil.mvp.view.vehicle
+package br.com.douglasti.fretefacil.mvp.view.vehicle.manage
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import br.com.douglasti.fretefacil.databinding.ActivityVehicleManageBinding
-import br.com.douglasti.fretefacil.mvp.iface.IVehicleManageContract
+import br.com.douglasti.fretefacil.mvp.iface.contract.IVehicleManageContract
 import br.com.douglasti.fretefacil.mvp.view.BaseAppCompactActivity
-import br.com.douglasti.fretefacil.mvp.view.vehicle.vehicleAdd.VehicleAddActivity
+import br.com.douglasti.fretefacil.mvp.view.vehicle.add.VehicleAddActivity
 import br.com.douglasti.fretefacil.util.Constantes
 
 class VehicleManageActivity : BaseAppCompactActivity(), IVehicleManageContract.View {

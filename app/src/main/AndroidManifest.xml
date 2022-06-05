@@ -11,12 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FreteFacil">
         <activity
-            android:name=".mvp.view.vehicle.vehicleAdd.VehicleAddActivity"
+            android:name=".mvp.view.vehicle.add.VehicleAddActivity"
             android:exported="false"
-            android:parentActivityName=".mvp.view.vehicle.VehicleManageActivity"
+            android:parentActivityName=".mvp.view.vehicle.manage.VehicleManageActivity"
             android:label="@string/vehicle_registration" />
         <activity
-            android:name=".mvp.view.vehicle.VehicleManageActivity"
+            android:name=".mvp.view.vehicle.manage.VehicleManageActivity"
             android:exported="false"
             android:parentActivityName=".mvp.view.MenuActivity"
             android:label=""/>
@@ -24,7 +24,7 @@
             android:name=".mvp.view.MenuActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".mvp.view.MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="true">
             <intent-filter>

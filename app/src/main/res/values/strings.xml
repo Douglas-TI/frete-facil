@@ -9,8 +9,8 @@
     <string name="brand">Marca</string>
     <string name="model">Modelo</string>
     <string name="fuels">Combustíveis</string>
-    <string name="maitenance_cost">Custos de Manutenção</string>
-    <string name="period">Período(meses)</string>
+    <string name="maitenance">Manutenção</string>
+    <string name="frequency">Frequência(meses)</string>
     <string name="value">Valor</string>
     <string name="save">Salvar</string>
     <string name="maitenance_type">Tipo de Manutenção</string>
@@ -22,4 +22,5 @@
     <string name="vehicle_registration">Cadastro de Veículo</string>
     <string name="select">Selecione</string>
     <string name="select_fuel">Selecione um tipo de combustível</string>
+    <string name="of">de</string>
 </resources>

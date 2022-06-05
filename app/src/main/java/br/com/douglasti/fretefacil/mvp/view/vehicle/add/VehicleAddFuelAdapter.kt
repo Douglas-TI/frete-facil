@@ -1,12 +1,12 @@
-package br.com.douglasti.fretefacil.mvp.view.vehicle.vehicleAdd
+package br.com.douglasti.fretefacil.mvp.view.vehicle.add
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.douglasti.fretefacil.databinding.FuelBodyBinding
-import br.com.douglasti.fretefacil.mvp.iface.IVehicleAddContract
-import br.com.douglasti.fretefacil.mvp.model.entities.Fuel
+import br.com.douglasti.fretefacil.mvp.iface.contract.IVehicleAddContract
+import br.com.douglasti.fretefacil.mvp.model.data.entities.Fuel
 
 @SuppressLint("NotifyDataSetChanged")
 class VehicleAddFuelAdapter(val presenter: IVehicleAddContract.Presenter): RecyclerView.Adapter<VehicleAddFuelAdapter.MyViewHolder>() {

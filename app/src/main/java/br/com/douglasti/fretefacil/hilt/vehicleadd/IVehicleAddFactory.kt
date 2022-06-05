@@ -1,7 +1,7 @@
 package br.com.douglasti.fretefacil.hilt.vehicleadd
 
-import br.com.douglasti.fretefacil.mvp.iface.IVehicleAddContract
-import br.com.douglasti.fretefacil.mvp.presenter.VehicleAddPresenter
+import br.com.douglasti.fretefacil.mvp.iface.contract.IVehicleAddContract
+import br.com.douglasti.fretefacil.mvp.presenter.vehicle.add.VehicleAddPresenter
 import dagger.assisted.AssistedFactory
 
 @AssistedFactory

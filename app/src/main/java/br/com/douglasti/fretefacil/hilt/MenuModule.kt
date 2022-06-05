@@ -1,6 +1,6 @@
 package br.com.douglasti.fretefacil.hilt
 
-import br.com.douglasti.fretefacil.mvp.iface.IMenuContract
+import br.com.douglasti.fretefacil.mvp.iface.contract.IMenuContract
 import br.com.douglasti.fretefacil.mvp.presenter.MenuPresenter
 import dagger.Binds
 import dagger.Module

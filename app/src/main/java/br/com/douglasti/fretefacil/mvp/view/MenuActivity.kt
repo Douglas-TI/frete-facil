@@ -1,11 +1,10 @@
 package br.com.douglasti.fretefacil.mvp.view
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import br.com.douglasti.fretefacil.databinding.ActivityMenuBinding
-import br.com.douglasti.fretefacil.mvp.iface.IMenuContract
-import br.com.douglasti.fretefacil.mvp.view.vehicle.VehicleManageActivity
+import br.com.douglasti.fretefacil.mvp.iface.contract.IMenuContract
+import br.com.douglasti.fretefacil.mvp.view.vehicle.manage.VehicleManageActivity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

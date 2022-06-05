@@ -1,6 +1,6 @@
-package br.com.douglasti.fretefacil.mvp.iface
+package br.com.douglasti.fretefacil.mvp.iface.contract
 
-import br.com.douglasti.fretefacil.mvp.model.entities.Fuel
+import br.com.douglasti.fretefacil.mvp.model.data.entities.Fuel
 
 interface IVehicleAddContract {
 
@@ -21,8 +21,8 @@ interface IVehicleAddContract {
         fun getStringEtMaitenanceCost(): String
         fun setErrorEtMaitenanceCost(error: String)
 
-        fun getStringEtMaitenanceCostMonths(): String
-        fun setErrorEtMaitenanceCostMonths(error: String)
+        fun getStringEtMaitenanceFrequency(): String
+        fun setErrorEtMaitenanceFrequency(error: String)
 
         fun getFuelList(): MutableList<Fuel>
         fun addFuel(fuel: Fuel)
