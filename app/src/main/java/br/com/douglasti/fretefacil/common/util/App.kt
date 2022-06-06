@@ -7,8 +7,6 @@ import dagger.hilt.android.HiltAndroidApp
 @HiltAndroidApp
 class App: Application() {
 
-    private var context: Context? = null
-
     companion object {
         private var user: String = ""
 
