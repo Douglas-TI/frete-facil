@@ -2,6 +2,8 @@ package br.com.douglasti.fretefacil.mvp.view
 
 import android.content.Intent
 import android.os.Bundle
+import br.com.douglasti.fretefacil.common.util.App
+import br.com.douglasti.fretefacil.common.util.SharedPreferences
 import br.com.douglasti.fretefacil.databinding.ActivityMenuBinding
 import br.com.douglasti.fretefacil.mvp.iface.contract.IMenuContract
 import br.com.douglasti.fretefacil.mvp.view.vehicle.manage.VehicleManageActivity
@@ -26,12 +28,19 @@ class MenuActivity : BaseAppCompactActivity(), IMenuContract.View {
 
     private fun loadView() {
         setOpenVehicleActivity()
-
-        setTitle("Bem vindo, Douglas.")
+        title = "Bem vindo " + App.getUser()
+        setBtExit()
     }
 
     private fun setOpenVehicleActivity() {
         val intent = Intent(this, VehicleManageActivity::class.java)
         bind.btVehicle.setOnClickListener { startActivity(intent) }
+    }
+
+    private fun setBtExit() {
+        bind.btExit.setOnClickListener {
+            SharedPreferences.setUser("")
+            finish()
+        }
     }
 }
