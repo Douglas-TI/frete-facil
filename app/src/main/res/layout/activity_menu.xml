@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mvp.view.MenuActivity">
+    tools:context=".ui.menu.MenuActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout"

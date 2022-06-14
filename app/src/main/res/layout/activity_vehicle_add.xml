@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mvp.view.vehicle.add.VehicleAddActivity">
+    tools:context=".ui.vehicle.add.VehicleAddActivity">
 
     <LinearLayout
         android:layout_width="0dp"
