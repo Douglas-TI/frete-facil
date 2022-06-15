@@ -2,6 +2,7 @@ package br.com.douglasti.fretefacil.ui.vehicle.manage
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.viewModels
 import br.com.douglasti.fretefacil.databinding.ActivityVehicleManageBinding
 import br.com.douglasti.fretefacil.ui.base.BaseAppCompactActivity
 import br.com.douglasti.fretefacil.ui.vehicle.add.VehicleAddActivity
@@ -10,6 +11,7 @@ import br.com.douglasti.fretefacil.util.Constants
 class VehicleManageActivity : BaseAppCompactActivity(), IVehicleManageContract.View {
 
     private lateinit var bind: ActivityVehicleManageBinding
+    private val viewModel: VehicleManageVM by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,4 +1,4 @@
-package br.com.douglasti.fretefacil.di.module
+package br.com.douglasti.fretefacil.di.hilt.module
 
 import br.com.douglasti.fretefacil.ui.login.ILoginContract
 import br.com.douglasti.fretefacil.ui.login.LoginPresenter

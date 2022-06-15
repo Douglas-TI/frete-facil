@@ -3,9 +3,7 @@ package br.com.douglasti.fretefacil.ui.login
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
 import br.com.douglasti.fretefacil.databinding.ActivityLoginBinding
 import br.com.douglasti.fretefacil.ui.menu.MenuActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -15,9 +13,7 @@ import javax.inject.Inject
 class LoginActivity : AppCompatActivity(), ILoginContract.View {
 
     private lateinit var bind: ActivityLoginBinding
-    private lateinit var viewModel: LoginViewModel
-
-    var usuario = ""
+    private lateinit var viewModel: LoginVM
 
     @Suppress("ProtectedInFinal")
     @Inject
@@ -29,7 +25,7 @@ class LoginActivity : AppCompatActivity(), ILoginContract.View {
         bind = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(bind.root)
 
-        viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
+        viewModel = ViewModelProvider(this)[LoginVM::class.java] //instanciação sem o Hilt
 
 
         loadView()

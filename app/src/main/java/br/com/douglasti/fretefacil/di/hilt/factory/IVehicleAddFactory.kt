@@ -1,4 +1,4 @@
-package br.com.douglasti.fretefacil.di.factory
+package br.com.douglasti.fretefacil.di.hilt.factory
 
 import br.com.douglasti.fretefacil.ui.vehicle.add.IVehicleAddContract
 import br.com.douglasti.fretefacil.ui.vehicle.add.VehicleAddPresenter
