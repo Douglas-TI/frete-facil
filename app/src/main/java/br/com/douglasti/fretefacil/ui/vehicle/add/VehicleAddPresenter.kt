@@ -4,12 +4,12 @@ import android.content.Context
 import android.view.View
 import androidx.room.Room
 import br.com.douglasti.fretefacil.R
-import br.com.douglasti.fretefacil.source.local.AppDatabase
-import br.com.douglasti.fretefacil.model.entity.Fuel
-import br.com.douglasti.fretefacil.model.entity.FuelConstant
-import br.com.douglasti.fretefacil.model.entity.Maitenance
-import br.com.douglasti.fretefacil.model.entity.Vehicle
-import br.com.douglasti.fretefacil.utils.Constantes
+import br.com.douglasti.fretefacil.source.local.room.AppDatabase
+import br.com.douglasti.fretefacil.model.entity.vehicle.Fuel
+import br.com.douglasti.fretefacil.model.entity.vehicle.FuelConstant
+import br.com.douglasti.fretefacil.model.entity.vehicle.Maitenance
+import br.com.douglasti.fretefacil.model.entity.vehicle.Vehicle
+import br.com.douglasti.fretefacil.util.Constants
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import dagger.hilt.android.qualifiers.ActivityContext
@@ -42,7 +42,7 @@ class VehicleAddPresenter @AssistedInject constructor(@Assisted val view: IVehic
         if(! validateVehicle(vehicle))
             return
 
-        if(view.getOperationType() == Constantes.NEW_REGISTER.description)
+        if(view.getOperationType() == Constants.NEW_REGISTER.description)
             saveVehicle(vehicle)
         else
             editVehicle(vehicle)

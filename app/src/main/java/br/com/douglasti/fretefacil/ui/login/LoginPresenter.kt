@@ -2,8 +2,7 @@ package br.com.douglasti.fretefacil.ui.login
 
 import android.content.Context
 import br.com.douglasti.fretefacil.R
-import br.com.douglasti.fretefacil.utils.App
-import br.com.douglasti.fretefacil.utils.SharedPreferences
+import br.com.douglasti.fretefacil.source.local.SharedPreferences
 
 import dagger.hilt.android.qualifiers.ActivityContext
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -24,7 +23,6 @@ class LoginPresenter @Inject constructor(@ActivityContext private val context: C
         if(SharedPreferences.getUser().isEmpty())
             return
 
-        App.setUser(SharedPreferences.getUser())
         view.openMenuActivity()
     }
 
@@ -35,8 +33,6 @@ class LoginPresenter @Inject constructor(@ActivityContext private val context: C
         }
 
         SharedPreferences.setUser(view.getStringEtUsuario())
-
-        App.setUser(SharedPreferences.getUser())
         view.openMenuActivity()
     }
 }

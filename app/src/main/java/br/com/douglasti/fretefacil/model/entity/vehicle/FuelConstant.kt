@@ -1,4 +1,4 @@
-package br.com.douglasti.fretefacil.model.entity
+package br.com.douglasti.fretefacil.model.entity.vehicle
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

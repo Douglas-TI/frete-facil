@@ -1,6 +1,6 @@
 package br.com.douglasti.fretefacil.ui.vehicle.add
 
-import br.com.douglasti.fretefacil.model.entity.Fuel
+import br.com.douglasti.fretefacil.model.entity.vehicle.Fuel
 
 interface IVehicleAddContract {
 

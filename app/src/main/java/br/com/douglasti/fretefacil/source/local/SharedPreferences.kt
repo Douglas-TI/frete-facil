@@ -1,4 +1,4 @@
-package br.com.douglasti.fretefacil.utils
+package br.com.douglasti.fretefacil.source.local
 
 import android.content.Context
 import androidx.preference.PreferenceManager

@@ -1,9 +1,9 @@
-package br.com.douglasti.fretefacil.source.local.dao
+package br.com.douglasti.fretefacil.source.local.room.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import br.com.douglasti.fretefacil.model.entity.FuelConstant
+import br.com.douglasti.fretefacil.model.entity.vehicle.FuelConstant
 
 @Dao
 interface FuelConstantDao {

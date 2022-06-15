@@ -25,9 +25,12 @@ class LoginActivity : AppCompatActivity(), ILoginContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         bind = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(bind.root)
+
         viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
+
 
         loadView()
     }

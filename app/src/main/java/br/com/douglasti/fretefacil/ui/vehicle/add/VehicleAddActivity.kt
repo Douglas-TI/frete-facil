@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.douglasti.fretefacil.R
 import br.com.douglasti.fretefacil.databinding.ActivityVehicleAddBinding
 import br.com.douglasti.fretefacil.di.factory.IVehicleAddFactory
-import br.com.douglasti.fretefacil.model.entity.Fuel
+import br.com.douglasti.fretefacil.model.entity.vehicle.Fuel
 import br.com.douglasti.fretefacil.ui.base.BaseAppCompactActivity
-import br.com.douglasti.fretefacil.utils.Constantes
+import br.com.douglasti.fretefacil.util.Constants
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -56,7 +56,7 @@ class VehicleAddActivity : BaseAppCompactActivity(), IVehicleAddContract.View {
         setFuelAddButton()
     }
 
-    override fun getOperationType() = intent.extras?.getString(Constantes.OPERATION_TYPE.description)
+    override fun getOperationType() = intent.extras?.getString(Constants.OPERATION_TYPE.description)
 
     private fun buildFuelAdapter() {
         fuelAdapter = VehicleAddFuelAdapter(presenter)

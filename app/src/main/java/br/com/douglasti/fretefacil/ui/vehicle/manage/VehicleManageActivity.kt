@@ -5,7 +5,7 @@ import android.os.Bundle
 import br.com.douglasti.fretefacil.databinding.ActivityVehicleManageBinding
 import br.com.douglasti.fretefacil.ui.base.BaseAppCompactActivity
 import br.com.douglasti.fretefacil.ui.vehicle.add.VehicleAddActivity
-import br.com.douglasti.fretefacil.utils.Constantes
+import br.com.douglasti.fretefacil.util.Constants
 
 class VehicleManageActivity : BaseAppCompactActivity(), IVehicleManageContract.View {
 
@@ -25,7 +25,7 @@ class VehicleManageActivity : BaseAppCompactActivity(), IVehicleManageContract.V
 
     private fun setOpenVehicleAddActivity() {
         val intent = Intent(this, VehicleAddActivity::class.java)
-            .putExtra(Constantes.OPERATION_TYPE.description, Constantes.NEW_REGISTER.value)
+            .putExtra(Constants.OPERATION_TYPE.description, Constants.NEW_REGISTER.value)
 
         bind.ibAddVehicle.setOnClickListener { startActivity(intent) }
     }
