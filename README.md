@@ -1,6 +1,7 @@
 # Frete Facil
 
-App de cálculo de frete feito em Android Nativo com Kotlin utilizando arquitetura limpa MVVM.
+App criado com o propósito de aprender novas tecnologias e ajudar um amigo que precisava do app para calcular fretes.
+Feito em Android Nativo com Kotlin utilizando arquitetura limpa MVVM.
 
 Bibliotecas utilizadas: 
 <br/>
