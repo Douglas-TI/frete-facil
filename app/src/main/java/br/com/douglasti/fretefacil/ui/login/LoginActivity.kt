@@ -1,59 +1,43 @@
 package br.com.douglasti.fretefacil.ui.login
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
+import android.os.PersistableBundle
+import androidx.activity.viewModels
 import br.com.douglasti.fretefacil.databinding.ActivityLoginBinding
+import br.com.douglasti.fretefacil.source.local.SharedPrefs
+import br.com.douglasti.fretefacil.ui.base.BaseAppCompactActivity
 import br.com.douglasti.fretefacil.ui.menu.MenuActivity
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
-class LoginActivity : AppCompatActivity(), ILoginContract.View {
+class LoginActivity : BaseAppCompactActivity(), ILoginContract.View {
 
-    private lateinit var bind: ActivityLoginBinding
-    private lateinit var viewModel: LoginVM
-
-    @Suppress("ProtectedInFinal")
-    @Inject
-    protected lateinit var presenter: ILoginContract.Presenter
+    private val bind by lazy { ActivityLoginBinding.inflate(layoutInflater) }
+    private val viewModel: LoginViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        bind = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(bind.root)
-
-        viewModel = ViewModelProvider(this)[LoginVM::class.java] //instanciação sem o Hilt
-
+        setViewModel(viewModel)
 
         loadView()
     }
 
     private fun loadView() {
-        viewModel.getNome().observe(this) {
-            bind.etUsuario.setText(it)
-        }
+        SharedPrefs.initSharedPreferences(this)
+        setBtEnter()
 
-        //setBtEnter()
-        //presenter.loadPresenter()
-
-        bind.button.setOnClickListener {
-            viewModel.setNome(bind.editTextTextPersonName.text.toString())
-        }
+        viewModel.autoLogin()
     }
 
-    private fun setBtEnter() {
+    private fun setBtEnter() =
         bind.btEnter.setOnClickListener {
-            //presenter.setInitialData()
+            viewModel.setInitialData(getStringEtUsuario())
         }
-    }
 
-    override fun openMenuActivity() {
-        val intent = Intent(this, MenuActivity::class.java)
-        startActivity(intent)
-    }
+    override fun openMenuActivity() =
+        startActivity(Intent(this, MenuActivity::class.java))
 
     override fun getStringEtUsuario() = bind.etUsuario.text.toString()
 

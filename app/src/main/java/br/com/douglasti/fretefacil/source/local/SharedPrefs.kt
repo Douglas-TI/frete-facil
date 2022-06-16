@@ -1,16 +1,18 @@
 package br.com.douglasti.fretefacil.source.local
 
+
 import android.content.Context
+import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
 
-class SharedPreferences {
+class SharedPrefs {
 
     companion object {
-
-        private lateinit var sharedPreferences: android.content.SharedPreferences
+        private lateinit var sharedPreferences: SharedPreferences
 
         fun initSharedPreferences(context: Context) {
-            sharedPreferences =  PreferenceManager.getDefaultSharedPreferences(context)
+            if(! this::sharedPreferences.isInitialized)
+                sharedPreferences =  PreferenceManager.getDefaultSharedPreferences(context)
         }
 
         fun setUser(user: String) {

@@ -3,7 +3,7 @@ package br.com.douglasti.fretefacil.ui.menu
 import android.content.Intent
 import android.os.Bundle
 import br.com.douglasti.fretefacil.util.App
-import br.com.douglasti.fretefacil.source.local.SharedPreferences
+import br.com.douglasti.fretefacil.source.local.SharedPrefs
 import br.com.douglasti.fretefacil.databinding.ActivityMenuBinding
 import br.com.douglasti.fretefacil.ui.base.BaseAppCompactActivity
 import br.com.douglasti.fretefacil.ui.vehicle.manage.VehicleManageActivity
@@ -28,7 +28,7 @@ class MenuActivity : BaseAppCompactActivity(), IMenuContract.View {
 
     private fun loadView() {
         setOpenVehicleActivity()
-        title = "Bem vindo " + App.getUser()
+        title = "Bem vindo " + SharedPrefs.getUser()
         setBtExit()
     }
 
@@ -39,7 +39,7 @@ class MenuActivity : BaseAppCompactActivity(), IMenuContract.View {
 
     private fun setBtExit() {
         bind.btExit.setOnClickListener {
-            SharedPreferences.setUser("")
+            SharedPrefs.setUser("")
             finish()
         }
     }

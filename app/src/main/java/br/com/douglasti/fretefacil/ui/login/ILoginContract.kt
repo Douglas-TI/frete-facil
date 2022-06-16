@@ -8,9 +8,4 @@ interface ILoginContract {
         fun openMenuActivity()
 
     }
-
-    interface Presenter {
-        fun loadPresenter()
-        fun setInitialData()
-    }
 }

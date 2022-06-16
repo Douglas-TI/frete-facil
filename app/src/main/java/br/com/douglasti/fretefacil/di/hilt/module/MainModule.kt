@@ -1,7 +1,6 @@
 package br.com.douglasti.fretefacil.di.hilt.module
 
 import br.com.douglasti.fretefacil.ui.login.ILoginContract
-import br.com.douglasti.fretefacil.ui.login.LoginPresenter
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -12,8 +11,8 @@ import dagger.hilt.android.scopes.ActivityScoped
 @InstallIn(ActivityComponent::class)
 abstract class MainModule {
 
-    @Binds
+    /*@Binds
     @ActivityScoped
-    abstract fun presenter(presenter: LoginPresenter): ILoginContract.Presenter
+    abstract fun presenter(presenter: LoginPresenter): ILoginContract.Presenter*/
 }
 
