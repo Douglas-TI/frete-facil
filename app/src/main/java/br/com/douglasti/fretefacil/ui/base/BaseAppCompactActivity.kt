@@ -28,16 +28,14 @@ open class BaseAppCompactActivity: AppCompatActivity() {
         setToastViewModel()
     }
 
-    fun setToastViewModel() =
-        lifecycleScope.launch {
+    fun setToastViewModel() {}
+        /*lifecycleScope.launch {
             viewModel.errors.collect { error ->
                 showToast(error.asString(getActivityContext()))
             }
-        }
+        }*/
 
     fun showToast(text: String) = Toast.makeText(this, text, Toast.LENGTH_LONG).show()
-
-    fun getActivityContext() = this
 
     fun getDefaultSpinnerAdapter(array: Array<String>): ArrayAdapter<String> {
         val adapter = ArrayAdapter(this, R.layout.spinner, array)
