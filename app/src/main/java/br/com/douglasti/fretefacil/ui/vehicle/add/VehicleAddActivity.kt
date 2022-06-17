@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.douglasti.fretefacil.R
 import br.com.douglasti.fretefacil.databinding.ActivityVehicleAddBinding
 import br.com.douglasti.fretefacil.di.hilt.factory.IVehicleAddFactory
-import br.com.douglasti.fretefacil.model.entity.vehicle.Fuel
+import br.com.douglasti.fretefacil.data.model.entity.vehicle.Fuel
 import br.com.douglasti.fretefacil.ui.base.BaseAppCompactActivity
 import br.com.douglasti.fretefacil.util.Constants
 import dagger.hilt.android.AndroidEntryPoint

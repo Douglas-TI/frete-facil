@@ -6,11 +6,15 @@ import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewbinding.ViewBinding
 import br.com.douglasti.fretefacil.R
 import br.com.douglasti.fretefacil.databinding.ActivityLoginBinding
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 open class BaseAppCompactActivity: AppCompatActivity() {
@@ -22,19 +26,6 @@ open class BaseAppCompactActivity: AppCompatActivity() {
 
     }
 
-    fun setViewModel(viewModel: BaseViewModel) {
-        this.viewModel = viewModel
-
-        setToastViewModel()
-    }
-
-    fun setToastViewModel() {}
-        /*lifecycleScope.launch {
-            viewModel.errors.collect { error ->
-                showToast(error.asString(getActivityContext()))
-            }
-        }*/
-
     fun showToast(text: String) = Toast.makeText(this, text, Toast.LENGTH_LONG).show()
 
     fun getDefaultSpinnerAdapter(array: Array<String>): ArrayAdapter<String> {
@@ -42,4 +33,11 @@ open class BaseAppCompactActivity: AppCompatActivity() {
         adapter.setDropDownViewResource(R.layout.spinner_dropdown)
         return adapter
     }
+
+    fun <T> collectLatestLifecycleFlow(flow: Flow<T>, collect: suspend (T) -> Unit) =
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                flow.collectLatest(collect)
+            }
+        }
 }

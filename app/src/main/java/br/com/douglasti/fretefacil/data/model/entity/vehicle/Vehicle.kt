@@ -1,4 +1,4 @@
-package br.com.douglasti.fretefacil.model.entity.vehicle
+package br.com.douglasti.fretefacil.data.model.entity.vehicle
 
 data class Vehicle(val brand: String,
                    val model: String,

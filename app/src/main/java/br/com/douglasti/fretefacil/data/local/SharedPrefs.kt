@@ -1,4 +1,4 @@
-package br.com.douglasti.fretefacil.source.local
+package br.com.douglasti.fretefacil.data.local
 
 
 import android.content.Context

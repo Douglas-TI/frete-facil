@@ -2,8 +2,7 @@ package br.com.douglasti.fretefacil.ui.menu
 
 import android.content.Intent
 import android.os.Bundle
-import br.com.douglasti.fretefacil.util.App
-import br.com.douglasti.fretefacil.source.local.SharedPrefs
+import br.com.douglasti.fretefacil.data.local.SharedPrefs
 import br.com.douglasti.fretefacil.databinding.ActivityMenuBinding
 import br.com.douglasti.fretefacil.ui.base.BaseAppCompactActivity
 import br.com.douglasti.fretefacil.ui.vehicle.manage.VehicleManageActivity

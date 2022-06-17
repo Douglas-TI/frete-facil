@@ -4,11 +4,11 @@ import android.content.Context
 import android.view.View
 import androidx.room.Room
 import br.com.douglasti.fretefacil.R
-import br.com.douglasti.fretefacil.source.local.room.AppDatabase
-import br.com.douglasti.fretefacil.model.entity.vehicle.Fuel
-import br.com.douglasti.fretefacil.model.entity.vehicle.FuelConstant
-import br.com.douglasti.fretefacil.model.entity.vehicle.Maitenance
-import br.com.douglasti.fretefacil.model.entity.vehicle.Vehicle
+import br.com.douglasti.fretefacil.data.local.room.AppDatabase
+import br.com.douglasti.fretefacil.data.model.entity.vehicle.Fuel
+import br.com.douglasti.fretefacil.data.model.entity.vehicle.FuelConstant
+import br.com.douglasti.fretefacil.data.model.entity.vehicle.Maitenance
+import br.com.douglasti.fretefacil.data.model.entity.vehicle.Vehicle
 import br.com.douglasti.fretefacil.util.Constants
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
