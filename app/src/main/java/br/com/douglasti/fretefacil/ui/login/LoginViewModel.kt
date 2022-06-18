@@ -1,9 +1,12 @@
 package br.com.douglasti.fretefacil.ui.login
 
+import android.content.Context
 import br.com.douglasti.fretefacil.R
 import br.com.douglasti.fretefacil.data.model.dto.state.LoginUiState
 import br.com.douglasti.fretefacil.data.local.SharedPrefs
+import br.com.douglasti.fretefacil.data.model.dto.Route
 import br.com.douglasti.fretefacil.ui.base.BaseViewModel
+import br.com.douglasti.fretefacil.ui.menu.MenuActivity
 import br.com.douglasti.fretefacil.util.UiText
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
@@ -15,12 +18,13 @@ class LoginViewModel @Inject constructor(): BaseViewModel() {
     private val _loginFlow = MutableSharedFlow<LoginUiState>()
     val loginFlow = _loginFlow.asSharedFlow()
 
-     fun autoLogin() {
+    fun autoLogin() {
         if(SharedPrefs.getUser().isEmpty())
             return
 
          val state = LoginUiState.OpenMenu(true)
          sendOneTimeEvent { _loginFlow.emit(state) }
+
 
     }
 

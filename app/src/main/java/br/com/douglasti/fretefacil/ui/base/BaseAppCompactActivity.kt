@@ -1,5 +1,6 @@
 package br.com.douglasti.fretefacil.ui.base
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
@@ -24,6 +25,18 @@ open class BaseAppCompactActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+    }
+
+    fun setIntentExtras(hashMap: HashMap<String, Any>, intent: Intent) {
+        if(hashMap.isEmpty())
+            return
+
+        hashMap.forEach {
+            if (it.value is String)
+                intent.putExtra(it.key, it.value as String)
+            if (it.value is Int)
+                intent.putExtra(it.key, it.value as Int)
+        }
     }
 
     fun showToast(text: String) = Toast.makeText(this, text, Toast.LENGTH_LONG).show()

@@ -7,5 +7,5 @@ sealed class LoginUiState {
 
     data class Text(val uiText: UiText): LoginUiState()
     data class OpenMenu(val boolean: Boolean? = null): LoginUiState()
-    data class RouteState(val route: Route)
+    data class RouteState <T> (val route: Route<T>)
 }

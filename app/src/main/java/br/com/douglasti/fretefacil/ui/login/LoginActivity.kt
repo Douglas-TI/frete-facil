@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import br.com.douglasti.fretefacil.databinding.ActivityLoginBinding
 import br.com.douglasti.fretefacil.data.local.SharedPrefs
+import br.com.douglasti.fretefacil.data.model.dto.Route
 import br.com.douglasti.fretefacil.data.model.dto.state.LoginUiState
 import br.com.douglasti.fretefacil.ui.base.BaseAppCompactActivity
 import br.com.douglasti.fretefacil.ui.menu.MenuActivity
@@ -44,12 +45,17 @@ class LoginActivity : BaseAppCompactActivity(), ILoginContract.View {
     }
 
     private fun setBtEnter() = bind.btEnter.setOnClickListener {
-        viewModel.setInitialData(getStringEtUsuario())
+        //viewModel.setInitialData(getStringEtUsuario())
+        openMenuActivity()
     }
 
     override fun openMenuActivity() {
+        val map: HashMap<String, Any> = hashMapOf("st1" to "obj1", "st2" to 2)
+        val route = Route(MenuActivity::class.java, map)
 
-        startActivity(Intent(this, MenuActivity::class.java))
+        val intent = Intent(this, route.activityClass)
+        setIntentExtras(route.extras, intent)
+        startActivity(intent)
     }
 
     override fun getStringEtUsuario() = bind.etUsuario.text.toString()

@@ -22,6 +22,9 @@ class MenuActivity : BaseAppCompactActivity(), IMenuContract.View {
         bind = ActivityMenuBinding.inflate(layoutInflater)
         setContentView(bind.root)
 
+        val id = intent.getStringExtra("st1")
+        val name = intent.getIntExtra("st2", 0)
+
         loadView()
     }
 
