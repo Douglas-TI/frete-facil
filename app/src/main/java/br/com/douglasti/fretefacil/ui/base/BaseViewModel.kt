@@ -6,7 +6,7 @@ import kotlinx.coroutines.launch
 
 open class BaseViewModel: ViewModel() {
 
-    fun sendOneTimeEvent(handler: suspend () -> Unit) {
+    fun updateState(handler: suspend () -> Unit) {
         viewModelScope.launch {
             handler.invoke()
         }

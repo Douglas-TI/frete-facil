@@ -17,10 +17,12 @@
     <string name="type">Tipo</string>
     <string name="kml">KM/L</string>
     <string name="required_field">Campo Obrigatório</string>
+    <string name="login_required">Login é obrigatório</string>
     <string name="btAdd">Botão Adicionar</string>
     <string name="required_fuel">Necessário adicionar pelomenos um tipo de combustível</string>
     <string name="vehicle_registration">Cadastro de Veículo</string>
     <string name="select">Selecione</string>
     <string name="select_fuel">Selecione um tipo de combustível</string>
     <string name="of">de</string>
+    <string name="empty"></string>
 </resources>

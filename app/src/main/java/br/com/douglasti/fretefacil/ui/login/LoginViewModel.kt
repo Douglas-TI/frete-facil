@@ -1,43 +1,60 @@
 package br.com.douglasti.fretefacil.ui.login
 
-import android.content.Context
-import br.com.douglasti.fretefacil.R
-import br.com.douglasti.fretefacil.data.model.dto.state.LoginUiState
+import androidx.annotation.StringRes
+import androidx.lifecycle.viewModelScope
+
 import br.com.douglasti.fretefacil.data.local.SharedPrefs
-import br.com.douglasti.fretefacil.data.model.dto.Route
+import br.com.douglasti.fretefacil.data.usecase.LoginValidation
+
 import br.com.douglasti.fretefacil.ui.base.BaseViewModel
-import br.com.douglasti.fretefacil.ui.menu.MenuActivity
-import br.com.douglasti.fretefacil.util.UiText
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(): BaseViewModel() {
+class LoginViewModel @Inject constructor(@Inject var loginValidation: LoginValidation): BaseViewModel() {
 
-    private val _loginFlow = MutableSharedFlow<LoginUiState>()
-    val loginFlow = _loginFlow.asSharedFlow()
+    private val _loginState = MutableStateFlow(LoginUiState())
+    val loginState: StateFlow<LoginUiState> = _loginState
+
+    private val _loginEvent = Channel<LoginUiEvent>()
+    val loginEvent =  _loginEvent.receiveAsFlow()
 
     fun autoLogin() {
         if(SharedPrefs.getUser().isEmpty())
             return
 
-         val state = LoginUiState.OpenMenu(true)
-         sendOneTimeEvent { _loginFlow.emit(state) }
+     /*val state = LoginUiState.OpenMenu(true)
+     sendOneTimeEvent { _loginFlow.emit(state) }*/
 
 
     }
 
-    fun setInitialData(usuario: String) {
-        if (usuario.isBlank()) {
-            val state = LoginUiState.Text(UiText.StringRes(R.string.required_field))
-            sendOneTimeEvent { _loginFlow.emit(state) }
+    fun login(usuario: String) = viewModelScope.launch {
+       val validationResult = loginValidation.validate(usuario, "")
+       if(! validationResult.sucessful) {
+           _loginState.update {
+               it.copy(userErrorMessage = validationResult.errorMessage)
+           }
 
-            return
-        }
+           return@launch
+       }
 
         SharedPrefs.setUser(usuario)
-        val state = LoginUiState.OpenMenu(true)
-        sendOneTimeEvent { _loginFlow.emit(state) }
+        _loginState.update {
+            it.copy(userErrorMessage = null) //UiText
+        }
+        _loginEvent.send(LoginUiEvent.loginSucessful)
     }
 }
+
+data class LoginUiState(
+    @StringRes val userErrorMessage: Int? = null
+)
+
+open class LoginUiEvent {
+    object loginSucessful: LoginUiEvent()
+}
+
