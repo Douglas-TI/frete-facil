@@ -31,7 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2">
 
         <EditText
-            android:id="@+id/et_usuario"
+            android:id="@+id/et_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -54,6 +54,13 @@
             android:backgroundTint="@color/orange"
             android:text="@string/enter"
             android:textColor="@color/white" />
+
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

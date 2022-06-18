@@ -1,12 +1,12 @@
 package br.com.douglasti.fretefacil.ui.login
 
-import androidx.annotation.StringRes
 import androidx.lifecycle.viewModelScope
 
 import br.com.douglasti.fretefacil.data.local.SharedPrefs
-import br.com.douglasti.fretefacil.data.usecase.LoginValidation
+import br.com.douglasti.fretefacil.domain.usecase.login.ILoginValidator
 
 import br.com.douglasti.fretefacil.ui.base.BaseViewModel
+import br.com.douglasti.fretefacil.util.UiText
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.*
@@ -14,7 +14,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(@Inject var loginValidation: LoginValidation): BaseViewModel() {
+class LoginViewModel @Inject constructor(): BaseViewModel() {
+
+    @Inject lateinit var loginValidator: ILoginValidator
 
     private val _loginState = MutableStateFlow(LoginUiState())
     val loginState: StateFlow<LoginUiState> = _loginState
@@ -26,35 +28,62 @@ class LoginViewModel @Inject constructor(@Inject var loginValidation: LoginValid
         if(SharedPrefs.getUser().isEmpty())
             return
 
-     /*val state = LoginUiState.OpenMenu(true)
-     sendOneTimeEvent { _loginFlow.emit(state) }*/
-
-
+        viewModelScope.launch { _loginEvent.send(LoginUiEvent.LoginSucessful) }
     }
 
-    fun login(usuario: String) = viewModelScope.launch {
-       val validationResult = loginValidation.validate(usuario, "")
-       if(! validationResult.sucessful) {
-           _loginState.update {
-               it.copy(userErrorMessage = validationResult.errorMessage)
-           }
+    fun login(username: String, password: String) {
+        val isValidUsername = validateUsername(username)
+        val isValidPassword = validatePassword(password)
 
-           return@launch
-       }
+        if(isValidUsername && isValidPassword)
+            validateLogin(username, password)
+    }
 
-        SharedPrefs.setUser(usuario)
-        _loginState.update {
-            it.copy(userErrorMessage = null) //UiText
+
+    private fun validateUsername(username: String): Boolean {
+        val validationResult = loginValidator.username(username)
+        if(! validationResult.sucess) {
+            _loginState.update { it.copy(invalidUserMsg = validationResult.message) }
+
+            return false
         }
-        _loginEvent.send(LoginUiEvent.loginSucessful)
+        _loginState.update { it.copy(invalidUserMsg = null) }
+
+        return true
+    }
+
+    private fun validatePassword(password: String): Boolean {
+        val validationResult = loginValidator.password(password)
+        if(! validationResult.sucess) {
+            _loginState.update { it.copy(invalidPasswordMsg = validationResult.message) }
+
+            return false
+        }
+        _loginState.update { it.copy(invalidPasswordMsg = null) }
+
+        return true
+    }
+
+    private fun validateLogin(username: String, password: String) {
+        val validationResult = loginValidator.login(username, password)
+        if(! validationResult.sucess) {
+            _loginState.update { it.copy(invalidCredentialsMsg = validationResult.message) }
+            return
+        }
+        _loginState.update { it.copy(invalidCredentialsMsg = null) }
+
+        SharedPrefs.setUser(username)
+        viewModelScope.launch { _loginEvent.send(LoginUiEvent.LoginSucessful) }
     }
 }
 
 data class LoginUiState(
-    @StringRes val userErrorMessage: Int? = null
+    val invalidUserMsg: UiText? = null,
+    val invalidPasswordMsg: UiText? = null,
+    val invalidCredentialsMsg: UiText? = null
 )
 
 open class LoginUiEvent {
-    object loginSucessful: LoginUiEvent()
+    object LoginSucessful: LoginUiEvent()
 }
 

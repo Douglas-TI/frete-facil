@@ -27,18 +27,6 @@ open class BaseAppCompactActivity: AppCompatActivity() {
 
     }
 
-    fun setIntentExtras(hashMap: HashMap<String, Any>, intent: Intent) {
-        if(hashMap.isEmpty())
-            return
-
-        hashMap.forEach {
-            if (it.value is String)
-                intent.putExtra(it.key, it.value as String)
-            if (it.value is Int)
-                intent.putExtra(it.key, it.value as Int)
-        }
-    }
-
     fun showToast(text: String) = Toast.makeText(this, text, Toast.LENGTH_LONG).show()
 
     fun getDefaultSpinnerAdapter(array: Array<String>): ArrayAdapter<String> {
