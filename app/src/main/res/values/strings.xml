@@ -4,7 +4,8 @@
     <string name="freights">Fretes</string>
     <string name="vehicles">Veículos</string>
     <string name="welcome">Bem Vindo, Douglas.</string>
-    <string name="insert_name">Insira seu nome</string>
+    <string name="username">Usuário</string>
+    <string name="password">Senha</string>
     <string name="enter">Entrar</string>
     <string name="brand">Marca</string>
     <string name="model">Modelo</string>

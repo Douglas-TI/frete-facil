@@ -39,7 +39,6 @@ class LoginViewModel @Inject constructor(): BaseViewModel() {
             validateLogin(username, password)
     }
 
-
     private fun validateUsername(username: String): Boolean {
         val validationResult = loginValidator.username(username)
         if(! validationResult.sucess) {
