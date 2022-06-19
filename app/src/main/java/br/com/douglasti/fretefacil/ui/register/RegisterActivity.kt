@@ -1,11 +1,13 @@
 package br.com.douglasti.fretefacil.ui.register
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import br.com.douglasti.fretefacil.databinding.ActivityRegisterBinding
+import br.com.douglasti.fretefacil.ui.base.BaseAppCompactActivity
+import dagger.hilt.android.AndroidEntryPoint
 
-class RegisterActivity : AppCompatActivity() {
+@AndroidEntryPoint
+class RegisterActivity : BaseAppCompactActivity() {
 
     private val bind by lazy { ActivityRegisterBinding.inflate(layoutInflater) }
     private val viewModel: RegisterViewModel by viewModels()
@@ -18,6 +20,23 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun initView() {
+        handleState()
+        handleEvents()
 
+        bind.btRegister.setOnClickListener { openMenuActivity() }
+    }
+
+    private fun handleState() = collectLatestLifecycleFlow(viewModel.registerState) {
+
+    }
+
+    private fun handleEvents() = collectLatestLifecycleFlow(viewModel.registerEvent) {
+        when(it) {
+
+        }
+    }
+
+    private fun openMenuActivity() {
+        finish()
     }
 }

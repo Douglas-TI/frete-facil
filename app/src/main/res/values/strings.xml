@@ -6,6 +6,7 @@
     <string name="welcome">Bem Vindo, Douglas.</string>
     <string name="username">Usuário</string>
     <string name="password">Senha</string>
+    <string name="confirm_password">Confirmar Senha</string>
     <string name="enter">Entrar</string>
     <string name="brand">Marca</string>
     <string name="model">Modelo</string>
@@ -27,4 +28,6 @@
     <string name="select_fuel">Selecione um tipo de combustível</string>
     <string name="of">de</string>
     <string name="sucessful_login">Logado com sucesso</string>
+    <string name="register">Registrar</string>
+    <string name="new_user">Novo Usuário</string>
 </resources>

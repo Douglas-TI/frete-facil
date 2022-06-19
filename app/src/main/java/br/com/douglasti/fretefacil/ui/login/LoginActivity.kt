@@ -2,6 +2,7 @@ package br.com.douglasti.fretefacil.ui.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import br.com.douglasti.fretefacil.R
 import br.com.douglasti.fretefacil.data.local.SharedPrefs
@@ -19,6 +20,7 @@ class LoginActivity : BaseAppCompactActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(bind.root)
+        buildProgressBarDefaultCl(bind.root)
 
         initView()
     }
@@ -34,21 +36,25 @@ class LoginActivity : BaseAppCompactActivity() {
     }
 
     private fun handleState() = collectLatestLifecycleFlow(viewModel.loginState) {
-        if (it.invalidUserMsg != null) {
-            val msg = it.invalidUserMsg.asString(this@LoginActivity)
+        if (it.emptyUserMsg != null) {
+            val msg = it.emptyUserMsg.asString(this@LoginActivity)
             bind.etUsername.error = msg
             bind.etUsername.requestFocus()
         } else
             bind.etUsername.error = null
 
-        if (it.invalidPasswordMsg != null) {
-            val msg = it.invalidPasswordMsg.asString(this@LoginActivity)
+        if (it.emptyPasswordMsg != null) {
+            val msg = it.emptyPasswordMsg.asString(this@LoginActivity)
             bind.etPassword.error = msg
             bind.etPassword.requestFocus()
         } else
             bind.etPassword.error = null
-    }
 
+        if(it.loading)
+            setProgressBarVisibility(View.VISIBLE)
+        else
+            setProgressBarVisibility(View.INVISIBLE)
+    }
 
     private fun handleEvents() = collectLatestLifecycleFlow(viewModel.loginEvent) {
         when(it) {
@@ -56,6 +62,8 @@ class LoginActivity : BaseAppCompactActivity() {
                 showToast(getString(R.string.sucessful_login))
                 openMenuActivity()
             }
+            is LoginUiEvent.ClearUserField -> bind.etUsername.setText("")
+            is LoginUiEvent.ClearPasswordField -> bind.etPassword.setText("")
         }
     }
 
