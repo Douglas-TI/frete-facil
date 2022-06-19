@@ -44,11 +44,11 @@ class LoginViewModel @Inject constructor(): BaseViewModel() {
     private fun validateUsername(username: String): Boolean {
         val validationResult = loginValidator.username(username)
         if(! validationResult.sucess) {
-            _loginState.update { it.copy(emptyUserMsg = validationResult.message, loading = false) }
+            _loginState.update { it.copy(emptyUserErrorMsg = validationResult.message, loading = false) }
 
             return false
         }
-        _loginState.update { it.copy(emptyUserMsg = null, loading = false) }
+        _loginState.update { it.copy(emptyUserErrorMsg = null, loading = false) }
 
         return true
     }
@@ -56,11 +56,11 @@ class LoginViewModel @Inject constructor(): BaseViewModel() {
     private fun validatePassword(password: String): Boolean {
         val validationResult = loginValidator.password(password)
         if(! validationResult.sucess) {
-            _loginState.update { it.copy(emptyPasswordMsg = validationResult.message, loading = false) }
+            _loginState.update { it.copy(emptyPasswordErrorMsg = validationResult.message, loading = false) }
 
             return false
         }
-        _loginState.update { it.copy(emptyPasswordMsg = null, loading = false) }
+        _loginState.update { it.copy(emptyPasswordErrorMsg = null, loading = false) }
 
         return true
     }
@@ -68,10 +68,10 @@ class LoginViewModel @Inject constructor(): BaseViewModel() {
     private fun validateLogin(username: String, password: String) {
         val validationResult = loginValidator.login(username, password)
         if(! validationResult.sucess) {
-            _loginState.update { it.copy(emptyCredentialsMsg = validationResult.message, loading = false) }
+            _loginState.update { it.copy(emptyCredentialsErrorMsg = validationResult.message, loading = false) }
             return
         }
-        _loginState.update { it.copy(emptyCredentialsMsg = null, loading = false) }
+        _loginState.update { it.copy(emptyCredentialsErrorMsg = null, loading = false) }
 
         SharedPrefs.setUser(username)
         viewModelScope.launch {
@@ -83,9 +83,9 @@ class LoginViewModel @Inject constructor(): BaseViewModel() {
 }
 
 data class LoginUiState(
-    val emptyUserMsg: UiText? = null,
-    val emptyPasswordMsg: UiText? = null,
-    val emptyCredentialsMsg: UiText? = null,
+    val emptyUserErrorMsg: UiText? = null,
+    val emptyPasswordErrorMsg: UiText? = null,
+    val emptyCredentialsErrorMsg: UiText? = null,
     val loading: Boolean = false
 )
 

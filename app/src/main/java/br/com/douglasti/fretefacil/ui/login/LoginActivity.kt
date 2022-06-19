@@ -36,15 +36,15 @@ class LoginActivity : BaseAppCompactActivity() {
     }
 
     private fun handleState() = collectLatestLifecycleFlow(viewModel.loginState) {
-        if (it.emptyUserMsg != null) {
-            val msg = it.emptyUserMsg.asString(this@LoginActivity)
+        if (it.emptyUserErrorMsg != null) {
+            val msg = it.emptyUserErrorMsg.asString(this@LoginActivity)
             bind.etUsername.error = msg
             bind.etUsername.requestFocus()
         } else
             bind.etUsername.error = null
 
-        if (it.emptyPasswordMsg != null) {
-            val msg = it.emptyPasswordMsg.asString(this@LoginActivity)
+        if (it.emptyPasswordErrorMsg != null) {
+            val msg = it.emptyPasswordErrorMsg.asString(this@LoginActivity)
             bind.etPassword.error = msg
             bind.etPassword.requestFocus()
         } else
