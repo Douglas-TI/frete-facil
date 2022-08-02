@@ -2,6 +2,7 @@ package br.com.douglasti.fretefacil.ui.register
 
 import android.os.Bundle
 import androidx.activity.viewModels
+import br.com.douglasti.fretefacil.R
 import br.com.douglasti.fretefacil.databinding.ActivityRegisterBinding
 import br.com.douglasti.fretefacil.ui.base.BaseAppCompactActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,7 +24,7 @@ class RegisterActivity : BaseAppCompactActivity() {
         handleState()
         handleEvents()
 
-        bind.btRegister.setOnClickListener { openMenuActivity() }
+        setBtRegister()
     }
 
     private fun handleState() = collectLatestLifecycleFlow(viewModel.registerState) {
@@ -32,11 +33,27 @@ class RegisterActivity : BaseAppCompactActivity() {
 
     private fun handleEvents() = collectLatestLifecycleFlow(viewModel.registerEvent) {
         when(it) {
-
+            is RegisterUiEvent.registerSuccessful -> {
+                showToast(getString(R.string.registered_successfully))
+                finishRegister()
+            }
         }
     }
 
-    private fun openMenuActivity() {
-        finish()
-    }
+    private fun setBtRegister() =
+        bind.btRegister.setOnClickListener {
+            viewModel.register(
+                getStringEtUser(),
+                getStringEtPassword(),
+                getStringEtConfirmPassword()
+            )
+        }
+
+    private fun finishRegister() = finish()
+
+    private fun getStringEtUser() = bind.etUsername.text.toString()
+
+    private fun getStringEtPassword() = bind.etPassword.text.toString()
+
+    private fun getStringEtConfirmPassword() = bind.etConfirmPassword.text.toString()
 }
