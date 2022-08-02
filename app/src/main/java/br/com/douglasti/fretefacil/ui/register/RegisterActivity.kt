@@ -1,6 +1,7 @@
 package br.com.douglasti.fretefacil.ui.register
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import br.com.douglasti.fretefacil.R
 import br.com.douglasti.fretefacil.databinding.ActivityRegisterBinding
@@ -28,7 +29,17 @@ class RegisterActivity : BaseAppCompactActivity() {
     }
 
     private fun handleState() = collectLatestLifecycleFlow(viewModel.registerState) {
+        if (it.userRequiredErrorMsg != null) {
+            val msg = it.emptyUserErrorMsg.asString(this@LoginActivity)
+            bind.etUsername.error = msg
+            bind.etUsername.requestFocus()
+        } else
+            bind.etUsername.error = null
 
+        if(it.loading)
+            setProgressBarVisibility(View.VISIBLE)
+        else
+            setProgressBarVisibility(View.INVISIBLE)
     }
 
     private fun handleEvents() = collectLatestLifecycleFlow(viewModel.registerEvent) {

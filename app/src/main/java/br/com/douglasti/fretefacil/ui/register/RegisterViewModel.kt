@@ -65,13 +65,13 @@ class RegisterViewModel @Inject constructor(): BaseViewModel() {
 }
 
 data class RegisterUiState(
-    val loading: Boolean = false,
     val userRequiredErrorMsg: UiText? = null,
     val passwordRequiredErrorMsg: UiText? = null,
     val confirmPasswordRequiredErrorMsg: UiText? = null,
-    val passwordConfirmDifferentErrorMsg: UiText? = null
+    val passwordConfirmDifferentErrorMsg: UiText? = null,
+    val loading: Boolean = false
 )
 
 sealed class RegisterUiEvent {
-    object registerSuccessful: RegisterUiEvent()
+    object registerSuccessful: RegisterUiEvent()//add msg vinda do validator
 }
