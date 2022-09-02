@@ -9,6 +9,7 @@ import br.com.douglasti.fretefacil.data.local.SharedPrefs
 import br.com.douglasti.fretefacil.databinding.ActivityLoginBinding
 import br.com.douglasti.fretefacil.ui.base.BaseAppCompactActivity
 import br.com.douglasti.fretefacil.ui.menu.MenuActivity
+import br.com.douglasti.fretefacil.ui.register.RegisterActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,7 +28,9 @@ class LoginActivity : BaseAppCompactActivity() {
 
     private fun initView() {
         SharedPrefs.initSharedPreferences(this)
+
         setBtEnter()
+        setBtNewUser()
 
         viewModel.autoLogin()
 
@@ -71,8 +74,17 @@ class LoginActivity : BaseAppCompactActivity() {
         viewModel.login(getStringEtUser(), getStringEtPassword())
     }
 
+    private fun setBtNewUser() = bind.btNewUser.setOnClickListener {
+        openRegisterActivity()
+    }
+
     private fun openMenuActivity() {
         val intent = Intent(this, MenuActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun openRegisterActivity() {
+        val intent = Intent(this, RegisterActivity::class.java)
         startActivity(intent)
     }
 

@@ -3,8 +3,9 @@ package br.com.douglasti.fretefacil.domain.usecase.register
 import br.com.douglasti.fretefacil.R
 import br.com.douglasti.fretefacil.domain.usecase.ValidationResult
 import br.com.douglasti.fretefacil.util.UiText
+import javax.inject.Inject
 
-class RegisterValidator: IRegisterValidator {
+class RegisterValidator @Inject constructor(): IRegisterValidator {
 
     override fun validate(etUser: String, etPassword: String, etConfirmPassword: String): ValidationResult {
         if(etUser.isBlank())
@@ -19,6 +20,6 @@ class RegisterValidator: IRegisterValidator {
         if(etPassword != etConfirmPassword)
             return ValidationResult(false, UiText.StringRes(R.string.password_confirm_different))
 
-        return ValidationResult(true, null)
+        return ValidationResult(true, UiText.StringRes(R.string.registered_successfully))
     }
 }

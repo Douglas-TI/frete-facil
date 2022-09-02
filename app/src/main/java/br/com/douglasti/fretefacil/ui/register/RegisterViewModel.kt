@@ -5,7 +5,6 @@ import br.com.douglasti.fretefacil.R
 import br.com.douglasti.fretefacil.domain.usecase.ValidationResult
 import br.com.douglasti.fretefacil.domain.usecase.register.IRegisterValidator
 import br.com.douglasti.fretefacil.ui.base.BaseViewModel
-import br.com.douglasti.fretefacil.ui.login.LoginUiEvent
 import br.com.douglasti.fretefacil.util.UiText
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
@@ -31,10 +30,14 @@ class RegisterViewModel @Inject constructor(): BaseViewModel() {
         clearState()
 
         val result = registerValidator.validate(etUser, etPassword, etConfirmPassword)
-        if(! result.sucess)
+        if(! result.sucess) {
             handleRegisterError(result)
+            return
+        }
 
-        viewModelScope.launch { _registerEvent.send(RegisterUiEvent.registerSuccessful) }
+        viewModelScope.launch {
+            _registerEvent.send(RegisterUiEvent.RegisterSuccessful(result.message))
+        }
     }
 
     private fun handleRegisterError(result: ValidationResult) = when(result.message?.asResource()) {
@@ -45,21 +48,21 @@ class RegisterViewModel @Inject constructor(): BaseViewModel() {
             _registerState.update { it.copy(loading = false, passwordRequiredErrorMsg = result.message) }
         }
         R.string.confirm_password_required -> {
-            _registerState.update { it.copy(loading = false, confirmPasswordRequiredErrorMsg = result.message) }
+            _registerState.update { it.copy(loading = false, passwordConfirmationRequiredErrorMsg = result.message) }
         }
         R.string.password_confirm_different -> {
-            _registerState.update { it.copy(loading = false, passwordConfirmDifferentErrorMsg = result.message) }
+            _registerState.update { it.copy(loading = false, passwordConfirmationDifferentErrorMsg = result.message) }
         }
         else -> {}
     }
 
-    private fun clearState() = _registerState.update {
+    fun clearState() = _registerState.update {
         it.copy(
             loading = false,
             userRequiredErrorMsg = null,
             passwordRequiredErrorMsg = null,
-            confirmPasswordRequiredErrorMsg = null,
-            passwordConfirmDifferentErrorMsg = null
+            passwordConfirmationRequiredErrorMsg = null,
+            passwordConfirmationDifferentErrorMsg = null
         )
     }
 }
@@ -67,11 +70,11 @@ class RegisterViewModel @Inject constructor(): BaseViewModel() {
 data class RegisterUiState(
     val userRequiredErrorMsg: UiText? = null,
     val passwordRequiredErrorMsg: UiText? = null,
-    val confirmPasswordRequiredErrorMsg: UiText? = null,
-    val passwordConfirmDifferentErrorMsg: UiText? = null,
+    val passwordConfirmationRequiredErrorMsg: UiText? = null,
+    val passwordConfirmationDifferentErrorMsg: UiText? = null,
     val loading: Boolean = false
 )
 
 sealed class RegisterUiEvent {
-    object registerSuccessful: RegisterUiEvent()//add msg vinda do validator
+    class RegisterSuccessful(val msg: UiText?) : RegisterUiEvent() //add msg vinda do validator
 }
