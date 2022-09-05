@@ -19,7 +19,6 @@ class RegisterActivity : BaseAppCompactActivity() {
         setContentView(bind.root)
         buildProgressBarDefaultCl(bind.root)
 
-
         initView()
     }
 
@@ -59,6 +58,7 @@ class RegisterActivity : BaseAppCompactActivity() {
         if (state.passwordConfirmationRequiredErrorMsg != null) {
             bind.etPasswordConfirmation.error = state.passwordConfirmationRequiredErrorMsg.asString(this)
             bind.etPasswordConfirmation.requestFocus()
+            return
         }
         else
             bind.etPasswordConfirmation.error = null
