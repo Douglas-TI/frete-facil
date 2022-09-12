@@ -30,49 +30,16 @@ class RegisterActivity : BaseAppCompactActivity() {
     }
 
     private fun handleState() = collectLatestLifecycleFlow(viewModel.registerState) {
-        handleEtUser(it)
-        handleEtPassword(it)
-        handleEtPasswordConfirmation(it)
-        handleLoading(it)
-    }
+        setErrorEt(bind.etUsername, it.userRequiredErrorMsg?.asString(this))
+        setErrorEt(bind.etPassword, it.passwordRequiredErrorMsg?.asString(this))
 
-    private fun handleEtUser(state: RegisterUiState) {
-        if (state.userRequiredErrorMsg != null) {
-            bind.etUsername.error = state.userRequiredErrorMsg.asString(this)
-            bind.etUsername.requestFocus()
+        when {
+            it.passwordConfirmationRequiredErrorMsg != null -> setErrorEt(bind.etUsername, it.userRequiredErrorMsg?.asString(this))
+            it.passwordConfirmationDifferentErrorMsg != null -> setErrorEt(bind.etUsername, it.userRequiredErrorMsg?.asString(this))
+            else -> setErrorEt(bind.etUsername, null)
         }
-        else
-            bind.etUsername.error = null
-    }
 
-    private fun handleEtPassword(state: RegisterUiState) {
-        if (state.passwordRequiredErrorMsg != null) {
-            bind.etPassword.error = state.passwordRequiredErrorMsg.asString(this)
-            bind.etPassword.requestFocus()
-        }
-        else
-            bind.etPassword.error = null
-    }
-
-    private fun handleEtPasswordConfirmation(state: RegisterUiState) {
-        if (state.passwordConfirmationRequiredErrorMsg != null) {
-            bind.etPasswordConfirmation.error = state.passwordConfirmationRequiredErrorMsg.asString(this)
-            bind.etPasswordConfirmation.requestFocus()
-            return
-        }
-        else
-            bind.etPasswordConfirmation.error = null
-
-        if (state.passwordConfirmationDifferentErrorMsg != null) {
-            bind.etPasswordConfirmation.error = state.passwordConfirmationDifferentErrorMsg.asString(this)
-            bind.etPasswordConfirmation.requestFocus()
-        }
-        else
-            bind.etPasswordConfirmation.error = null
-    }
-
-    private fun handleLoading(state: RegisterUiState) {
-        if(state.loading)
+        if(it.loading)
             setProgressBarVisibility(View.VISIBLE)
         else
             setProgressBarVisibility(View.INVISIBLE)

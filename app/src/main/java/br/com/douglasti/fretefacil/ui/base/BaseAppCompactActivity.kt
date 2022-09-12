@@ -3,6 +3,7 @@ package br.com.douglasti.fretefacil.ui.base
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -58,5 +59,10 @@ open class BaseAppCompactActivity: AppCompatActivity() {
 
     open fun setProgressBarVisibility(visibility: Int) {
         runOnUiThread { progressBar.visibility = visibility }
+    }
+
+    fun setErrorEt(et: EditText, error: String?) {
+        et.error = error
+        error?.let { et.requestFocus() }
     }
 }

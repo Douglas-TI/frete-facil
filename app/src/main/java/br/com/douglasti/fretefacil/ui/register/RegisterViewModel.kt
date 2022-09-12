@@ -30,30 +30,29 @@ class RegisterViewModel @Inject constructor(): BaseViewModel() {
         clearState()
 
         val result = registerValidator.validate(etUser, etPassword, etConfirmPassword)
-        if(! result.sucess) {
-            handleRegisterError(result)
-            return
-        }
-
-        viewModelScope.launch {
-            _registerEvent.send(RegisterUiEvent.RegisterSuccessful(result.message))
-        }
+        handleRegisterError(result)
     }
 
-    private fun handleRegisterError(result: ValidationResult) = when(result.message?.asResource()) {
-        R.string.user_required -> {
-            _registerState.update { it.copy(loading = false, userRequiredErrorMsg = result.message) }
+    private fun handleRegisterError(result: ValidationResult) {
+        when (result.message?.asResource()) {
+            R.string.user_required -> {
+                _registerState.update { it.copy(loading = false, userRequiredErrorMsg = result.message) }
+            }
+            R.string.password_required -> {
+                _registerState.update { it.copy(loading = false, passwordRequiredErrorMsg = result.message) }
+            }
+            R.string.confirm_password_required -> {
+                _registerState.update { it.copy(loading = false, passwordConfirmationRequiredErrorMsg = result.message) }
+            }
+            R.string.password_confirm_different -> {
+                _registerState.update { it.copy(loading = false, passwordConfirmationDifferentErrorMsg = result.message) }
+            }
+            else -> {
+                viewModelScope.launch {
+                    _registerEvent.send(RegisterUiEvent.RegisterSuccessful(result.message))
+                }
+            }
         }
-        R.string.password_required -> {
-            _registerState.update { it.copy(loading = false, passwordRequiredErrorMsg = result.message) }
-        }
-        R.string.confirm_password_required -> {
-            _registerState.update { it.copy(loading = false, passwordConfirmationRequiredErrorMsg = result.message) }
-        }
-        R.string.password_confirm_different -> {
-            _registerState.update { it.copy(loading = false, passwordConfirmationDifferentErrorMsg = result.message) }
-        }
-        else -> {}
     }
 
     fun clearState() = _registerState.update {
@@ -76,5 +75,5 @@ data class RegisterUiState(
 )
 
 sealed class RegisterUiEvent {
-    class RegisterSuccessful(val msg: UiText?) : RegisterUiEvent() //add msg vinda do validator
+    class RegisterSuccessful(val msg: UiText?) : RegisterUiEvent()
 }
