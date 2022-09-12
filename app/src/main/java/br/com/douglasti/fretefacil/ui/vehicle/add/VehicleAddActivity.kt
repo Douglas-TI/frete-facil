@@ -10,7 +10,7 @@ import br.com.douglasti.fretefacil.R
 import br.com.douglasti.fretefacil.databinding.ActivityVehicleAddBinding
 import br.com.douglasti.fretefacil.di.hilt.factory.IVehicleAddFactory
 import br.com.douglasti.fretefacil.data.model.entity.vehicle.Fuel
-import br.com.douglasti.fretefacil.ui.base.BaseAppCompactActivity
+import br.com.douglasti.fretefacil.ui.base.ExtensionAppCompactActivity
 import br.com.douglasti.fretefacil.util.Constants
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -18,7 +18,7 @@ import javax.inject.Inject
 
 @Suppress("ProtectedInFinal")
 @AndroidEntryPoint
-class VehicleAddActivity : BaseAppCompactActivity(), IVehicleAddContract.View {
+class VehicleAddActivity : ExtensionAppCompactActivity(), IVehicleAddContract.View {
 
     @Inject
     protected lateinit var vehicleAddFactory: IVehicleAddFactory

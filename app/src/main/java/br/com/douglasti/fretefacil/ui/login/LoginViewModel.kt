@@ -3,9 +3,8 @@ package br.com.douglasti.fretefacil.ui.login
 import androidx.lifecycle.viewModelScope
 
 import br.com.douglasti.fretefacil.data.local.SharedPrefs
-import br.com.douglasti.fretefacil.domain.usecase.login.ILoginValidator
 
-import br.com.douglasti.fretefacil.ui.base.BaseViewModel
+import br.com.douglasti.fretefacil.ui.base.ExtensionViewModel
 import br.com.douglasti.fretefacil.util.UiText
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
@@ -14,7 +13,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(): BaseViewModel() {
+class LoginViewModel @Inject constructor(): ExtensionViewModel() {
 
     //@Inject lateinit var loginValidator: ILoginValidator
 

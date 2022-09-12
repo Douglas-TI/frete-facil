@@ -18,7 +18,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 
-open class BaseAppCompactActivity: AppCompatActivity() {
+open class ExtensionAppCompactActivity: AppCompatActivity() {
 
     private lateinit var progressBar: ProgressBar
 

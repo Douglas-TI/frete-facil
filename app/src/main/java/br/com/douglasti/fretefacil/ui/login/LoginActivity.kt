@@ -7,13 +7,13 @@ import androidx.activity.viewModels
 import br.com.douglasti.fretefacil.R
 import br.com.douglasti.fretefacil.data.local.SharedPrefs
 import br.com.douglasti.fretefacil.databinding.ActivityLoginBinding
-import br.com.douglasti.fretefacil.ui.base.BaseAppCompactActivity
+import br.com.douglasti.fretefacil.ui.base.ExtensionAppCompactActivity
 import br.com.douglasti.fretefacil.ui.menu.MenuActivity
 import br.com.douglasti.fretefacil.ui.register.RegisterActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class LoginActivity : BaseAppCompactActivity() {
+class LoginActivity : ExtensionAppCompactActivity() {
 
     private val bind by lazy { ActivityLoginBinding.inflate(layoutInflater) }
     private val viewModel: LoginViewModel by viewModels()

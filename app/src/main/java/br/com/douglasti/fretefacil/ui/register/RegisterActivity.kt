@@ -3,13 +3,12 @@ package br.com.douglasti.fretefacil.ui.register
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
-import br.com.douglasti.fretefacil.R
 import br.com.douglasti.fretefacil.databinding.ActivityRegisterBinding
-import br.com.douglasti.fretefacil.ui.base.BaseAppCompactActivity
+import br.com.douglasti.fretefacil.ui.base.ExtensionAppCompactActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class RegisterActivity : BaseAppCompactActivity() {
+class RegisterActivity : ExtensionAppCompactActivity() {
 
     private val bind by lazy { ActivityRegisterBinding.inflate(layoutInflater) }
     private val viewModel: RegisterViewModel by viewModels()
@@ -45,6 +44,8 @@ class RegisterActivity : BaseAppCompactActivity() {
             setProgressBarVisibility(View.VISIBLE)
         else
             setProgressBarVisibility(View.INVISIBLE)
+
+
     }
 
     private fun handleEvents() = collectLatestLifecycleFlow(viewModel.registerEvent) {

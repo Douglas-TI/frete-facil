@@ -2,10 +2,9 @@ package br.com.douglasti.fretefacil.ui.register
 
 import androidx.lifecycle.viewModelScope
 import br.com.douglasti.fretefacil.R
-import br.com.douglasti.fretefacil.data.model.register.IRegisterModel
 import br.com.douglasti.fretefacil.domain.usecase.ValidationResult
 import br.com.douglasti.fretefacil.domain.usecase.register.IRegisterValidator
-import br.com.douglasti.fretefacil.ui.base.BaseViewModel
+import br.com.douglasti.fretefacil.ui.base.ExtensionViewModel
 import br.com.douglasti.fretefacil.util.UiText
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
@@ -17,9 +16,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class RegisterViewModel @Inject constructor(): BaseViewModel() {
+class RegisterViewModel @Inject constructor(): ExtensionViewModel() {
 
-    @Inject lateinit var registerModel: IRegisterModel
+    @Inject lateinit var registerValidator: IRegisterValidator
 
     private val _registerState = MutableStateFlow(RegisterUiState())
     val registerState: StateFlow<RegisterUiState> = _registerState
@@ -30,7 +29,7 @@ class RegisterViewModel @Inject constructor(): BaseViewModel() {
     fun register(etUser: String, etPassword: String, etConfirmPassword: String) {
         clearState()
 
-        val result = registerModel.registerValidator(etUser, etPassword, etConfirmPassword)
+        val result = registerValidator.validate(etUser, etPassword, etConfirmPassword)
         handleRegister(result)
     }
 
