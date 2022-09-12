@@ -16,7 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(): BaseViewModel() {
 
-    @Inject lateinit var loginValidator: ILoginValidator
+    //@Inject lateinit var loginValidator: ILoginValidator
 
     private val _loginState = MutableStateFlow(LoginUiState())
     val loginState: StateFlow<LoginUiState> = _loginState
@@ -42,31 +42,31 @@ class LoginViewModel @Inject constructor(): BaseViewModel() {
     }
 
     private fun validateUsername(username: String): Boolean {
-        val validationResult = loginValidator.username(username)
+        /*val validationResult = loginValidator.username(username)
         if(! validationResult.sucess) {
             _loginState.update { it.copy(emptyUserErrorMsg = validationResult.message, loading = false) }
 
             return false
         }
         _loginState.update { it.copy(emptyUserErrorMsg = null, loading = false) }
-
+        */
         return true
     }
 
     private fun validatePassword(password: String): Boolean {
-        val validationResult = loginValidator.password(password)
+       /* val validationResult = loginValidator.password(password)
         if(! validationResult.sucess) {
             _loginState.update { it.copy(emptyPasswordErrorMsg = validationResult.message, loading = false) }
 
             return false
         }
         _loginState.update { it.copy(emptyPasswordErrorMsg = null, loading = false) }
-
+        */
         return true
     }
 
     private fun validateLogin(username: String, password: String) {
-        val validationResult = loginValidator.login(username, password)
+      /*  val validationResult = loginValidator.login(username, password)
         if(! validationResult.sucess) {
             _loginState.update { it.copy(emptyCredentialsErrorMsg = validationResult.message, loading = false) }
             return
@@ -78,7 +78,7 @@ class LoginViewModel @Inject constructor(): BaseViewModel() {
             _loginEvent.send(LoginUiEvent.LoginSucessful)
             _loginEvent.send(LoginUiEvent.ClearUserField)
             _loginEvent.send(LoginUiEvent.ClearPasswordField)
-        }
+        }*/
     }
 }
 

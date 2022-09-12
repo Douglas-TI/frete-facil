@@ -1,4 +1,4 @@
-package br.com.douglasti.fretefacil.di.hilt.module
+package br.com.douglasti.fretefacil.di.hilt.module.usecase
 
 import br.com.douglasti.fretefacil.domain.usecase.login.ILoginValidator
 import br.com.douglasti.fretefacil.domain.usecase.login.LoginValidator
@@ -7,7 +7,9 @@ import br.com.douglasti.fretefacil.domain.usecase.register.RegisterValidator
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityComponent
 import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.android.scopes.ActivityScoped
 import dagger.hilt.android.scopes.ViewModelScoped
 
 @Module

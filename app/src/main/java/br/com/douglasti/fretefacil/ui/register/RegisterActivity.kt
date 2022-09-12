@@ -34,9 +34,11 @@ class RegisterActivity : BaseAppCompactActivity() {
         setErrorEt(bind.etPassword, it.passwordRequiredErrorMsg?.asString(this))
 
         when {
-            it.passwordConfirmationRequiredErrorMsg != null -> setErrorEt(bind.etUsername, it.userRequiredErrorMsg?.asString(this))
-            it.passwordConfirmationDifferentErrorMsg != null -> setErrorEt(bind.etUsername, it.userRequiredErrorMsg?.asString(this))
-            else -> setErrorEt(bind.etUsername, null)
+            it.passwordConfirmationRequiredErrorMsg != null ->
+                setErrorEt(bind.etPasswordConfirmation, it.passwordConfirmationRequiredErrorMsg.asString(this))
+            it.passwordConfirmationDifferentErrorMsg != null ->
+                setErrorEt(bind.etPasswordConfirmation, it.passwordConfirmationDifferentErrorMsg.asString(this))
+            else -> setErrorEt(bind.etPasswordConfirmation, null)
         }
 
         if(it.loading)
