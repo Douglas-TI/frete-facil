@@ -22,7 +22,7 @@ class SharedPrefs {
         }
 
         fun getUser(): String {
-            return sharedPreferences.getString("Name", "")!!
+            return sharedPreferences.getString("Name", "")!! //testing
         }
     }
 }
