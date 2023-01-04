@@ -16,8 +16,8 @@ class SharedPrefs {
         }
 
         fun setUser(user: String) {
-            val editor = sharedPreferences.edit()
-            editor.putString("Name", user)
+            val editor = sharedPreferences.edit() //1
+            editor.putString("Name", user) //2
             editor.apply()
         }
 

@@ -1,8 +1,11 @@
 package br.com.douglasti.fretefacil.ui.login
 
+import android.view.View
 import androidx.lifecycle.viewModelScope
+import br.com.douglasti.fretefacil.R
 
 import br.com.douglasti.fretefacil.data.local.SharedPrefs
+import br.com.douglasti.fretefacil.domain.usecase.login.ILoginValidator
 
 import br.com.douglasti.fretefacil.ui.base.ExtensionViewModel
 import br.com.douglasti.fretefacil.util.UiText
@@ -13,31 +16,45 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(): ExtensionViewModel() {
+class LoginViewModel @Inject constructor(
+    var loginValidator: ILoginValidator
+): ExtensionViewModel() {
 
-    //@Inject lateinit var loginValidator: ILoginValidator
+    private val _uiState = MutableStateFlow(LoginUiState())
+    val uiState: StateFlow<LoginUiState> = _uiState
 
-    private val _loginState = MutableStateFlow(LoginUiState())
-    val loginState: StateFlow<LoginUiState> = _loginState
-
-    private val _loginEvent = Channel<LoginUiEvent>()
-    val loginEvent =  _loginEvent.receiveAsFlow()
+    private val _uiEvent = Channel<LoginUiEvent>()
+    val uiEvent =  _uiEvent.receiveAsFlow()
 
     fun autoLogin() {
         if(SharedPrefs.getUser().isEmpty())
             return
 
-        viewModelScope.launch { _loginEvent.send(LoginUiEvent.LoginSucessful) }
+        viewModelScope.launch {
+            _uiEvent.send(LoginUiEvent.ShowToast(UiText.StringRes(R.string.login_successful)))
+            _uiEvent.send(LoginUiEvent.OpenMenu)
+        }
     }
 
     fun login(username: String, password: String) {
-        _loginState.update { it.copy(loading = true) }
+        if(! validateFieldsLogin(username, password)) {
 
-        val isValidUsername = validateUsername(username)
-        val isValidPassword = validatePassword(password)
+            return
+        }
 
-        if(isValidUsername && isValidPassword)
-            validateLogin(username, password)
+        _uiState.value = uiState.value.copy(loading = View.VISIBLE)
+    }
+
+    private fun validateFieldsLogin(username: String, password: String): Boolean {
+        if(username.isEmpty()) {
+            _uiState.update { it.copy(etUsernameError = UiText.StringRes(R.string.required_field)) }
+            return
+        }
+
+        if(username.isEmpty()) {
+            _uiState.update { it.copy(etUsernameError = UiText.StringRes(R.string.required_field)) }
+            return
+        }
     }
 
     private fun validateUsername(username: String): Boolean {
@@ -64,8 +81,8 @@ class LoginViewModel @Inject constructor(): ExtensionViewModel() {
         return true
     }
 
-    private fun validateLogin(username: String, password: String) {
-      /*  val validationResult = loginValidator.login(username, password)
+    /*private fun validateLogin(username: String, password: String) {
+        val validationResult = loginValidator.login(username, password)
         if(! validationResult.sucess) {
             _loginState.update { it.copy(emptyCredentialsErrorMsg = validationResult.message, loading = false) }
             return
@@ -77,19 +94,21 @@ class LoginViewModel @Inject constructor(): ExtensionViewModel() {
             _loginEvent.send(LoginUiEvent.LoginSucessful)
             _loginEvent.send(LoginUiEvent.ClearUserField)
             _loginEvent.send(LoginUiEvent.ClearPasswordField)
-        }*/
-    }
+        }
+    }*/
 }
 
 data class LoginUiState(
-    val emptyUserErrorMsg: UiText? = null,
-    val emptyPasswordErrorMsg: UiText? = null,
+    val etUsernameError: UiText? = null,
+    val etPasswordError: UiText? = null,
     val emptyCredentialsErrorMsg: UiText? = null,
-    val loading: Boolean = false
+    val loading: Int = View.INVISIBLE
 )
 
 open class LoginUiEvent {
-    object LoginSucessful: LoginUiEvent()
+    class ShowToast(val text: UiText): LoginUiEvent()
+    class ShowAlert(val text: UiText): LoginUiEvent()
+    object OpenMenu: LoginUiEvent()
     object ClearUserField: LoginUiEvent()
     object ClearPasswordField: LoginUiEvent()
 }

@@ -12,5 +12,5 @@ abstract class AppDatabase: RoomDatabase() {
 
     abstract fun fuelDao(): FuelDao
 
-    abstract fun fuelConstantDao(): FuelConstantDao
+    abstract fun fuelConstantDao(): FuelConstantDao //3
 }

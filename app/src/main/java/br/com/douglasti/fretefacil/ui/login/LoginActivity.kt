@@ -2,26 +2,25 @@ package br.com.douglasti.fretefacil.ui.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.activity.viewModels
-import br.com.douglasti.fretefacil.R
+import androidx.appcompat.app.AppCompatActivity
 import br.com.douglasti.fretefacil.data.local.SharedPrefs
 import br.com.douglasti.fretefacil.databinding.ActivityLoginBinding
-import br.com.douglasti.fretefacil.ui.base.ExtensionAppCompactActivity
+import br.com.douglasti.fretefacil.ui.base.*
 import br.com.douglasti.fretefacil.ui.menu.MenuActivity
 import br.com.douglasti.fretefacil.ui.register.RegisterActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class LoginActivity : ExtensionAppCompactActivity() {
+class LoginActivity : AppCompatActivity() {
 
     private val bind by lazy { ActivityLoginBinding.inflate(layoutInflater) }
     private val viewModel: LoginViewModel by viewModels()
+    private val progressBar by lazy { buildProgressBarDefaultCl(bind.root) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(bind.root)
-        buildProgressBarDefaultCl(bind.root)
 
         initView()
     }
@@ -38,35 +37,17 @@ class LoginActivity : ExtensionAppCompactActivity() {
         handleEvents()
     }
 
-    private fun handleState() = collectLatestLifecycleFlow(viewModel.loginState) {
-        if (it.emptyUserErrorMsg != null) {
-            val msg = it.emptyUserErrorMsg.asString(this@LoginActivity)
-            bind.etUsername.error = msg
-            bind.etUsername.requestFocus()
-        } else
-            bind.etUsername.error = null
-
-        if (it.emptyPasswordErrorMsg != null) {
-            val msg = it.emptyPasswordErrorMsg.asString(this@LoginActivity)
-            bind.etPassword.error = msg
-            bind.etPassword.requestFocus()
-        } else
-            bind.etPassword.error = null
-
-        if(it.loading)
-            setProgressBarVisibility(View.VISIBLE)
-        else
-            setProgressBarVisibility(View.INVISIBLE)
+    private fun handleState() = collectLatestLifecycleFlow(viewModel.uiState) {
+        setErrorEt(bind.etUsername, it.etUsernameError)
+        setErrorEt(bind.etPassword, it.etPasswordError)
+        progressBar.visibility = it.loading
     }
 
-    private fun handleEvents() = collectLatestLifecycleFlow(viewModel.loginEvent) {
+    private fun handleEvents() = collectLatestLifecycleFlow(viewModel.uiEvent) {
         when(it) {
-            is LoginUiEvent.LoginSucessful -> {
-                showToast(getString(R.string.sucessful_login))
-                openMenuActivity()
-            }
-            is LoginUiEvent.ClearUserField -> bind.etUsername.setText("")
-            is LoginUiEvent.ClearPasswordField -> bind.etPassword.setText("")
+            is LoginUiEvent.ShowToast -> showToast(it.text.asString(this))
+            is LoginUiEvent.ShowAlert -> showAlert(it.text.asString(this))
+            is LoginUiEvent.OpenMenu -> openMenuActivity()
         }
     }
 

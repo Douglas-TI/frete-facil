@@ -33,7 +33,7 @@
     <string name="select">Selecione</string>
     <string name="select_fuel">Selecione um tipo de combustível</string>
     <string name="of">de</string>
-    <string name="sucessful_login">Logado com sucesso</string>
+    <string name="login_successful">Logado com sucesso</string>
     <string name="register">Registrar</string>
     <string name="new_user">Novo Usuário</string>
 </resources>
