@@ -1,6 +1,6 @@
 # Frete Facil
 
-App criado com o propósito de aprender novas tecnologias e ajudar um amigo que precisa do app para calcular fretes.
+App criado com o propósito de aprender novas tecnologias e ajudar um amigo que precisa do app para calcular fretes de entregas.
 <br/>
 Feito em Android Nativo com Kotlin utilizando arquitetura limpa no padrão MVVM.
 
