@@ -1,5 +1,4 @@
 # Frete Facil
-
 <br/>
 Feito em Android Nativo com Kotlin utilizando arquitetura limpa no padrão MVVM.
 
