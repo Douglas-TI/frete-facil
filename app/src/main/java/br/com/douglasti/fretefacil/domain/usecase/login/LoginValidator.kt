@@ -7,8 +7,9 @@ import javax.inject.Inject
 
 class LoginValidator @Inject constructor(): ILoginValidator {
 
-    override fun login(login: String, password: String): ValidationResult {
-        if(login.isBlank())
+    override fun validateLogin(login: String, password: String): ValidationResult {
+        return ValidationResult(true, UiText.DynamicString(""))
+    // if(login.isBlank())
 
     }
 }

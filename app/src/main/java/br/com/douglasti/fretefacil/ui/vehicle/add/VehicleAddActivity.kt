@@ -4,24 +4,23 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.douglasti.fretefacil.R
 import br.com.douglasti.fretefacil.databinding.ActivityVehicleAddBinding
 import br.com.douglasti.fretefacil.di.hilt.factory.IVehicleAddFactory
 import br.com.douglasti.fretefacil.data.model.entity.vehicle.Fuel
-import br.com.douglasti.fretefacil.ui.base.ExtensionAppCompactActivity
+import br.com.douglasti.fretefacil.ui.base.getDefaultSpinnerAdapter
 import br.com.douglasti.fretefacil.util.Constants
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 
-@Suppress("ProtectedInFinal")
 @AndroidEntryPoint
-class VehicleAddActivity : ExtensionAppCompactActivity(), IVehicleAddContract.View {
+class VehicleAddActivity : AppCompatActivity(), IVehicleAddContract.View {
 
-    @Inject
-    protected lateinit var vehicleAddFactory: IVehicleAddFactory
+    @Inject lateinit var vehicleAddFactory: IVehicleAddFactory
     private lateinit var presenter: IVehicleAddContract.Presenter
     private lateinit var fuelAdapter: VehicleAddFuelAdapter
 

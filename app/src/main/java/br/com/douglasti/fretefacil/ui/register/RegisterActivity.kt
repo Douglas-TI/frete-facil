@@ -3,12 +3,16 @@ package br.com.douglasti.fretefacil.ui.register
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import br.com.douglasti.fretefacil.databinding.ActivityRegisterBinding
-import br.com.douglasti.fretefacil.ui.base.ExtensionAppCompactActivity
+import br.com.douglasti.fretefacil.ui.base.buildProgressBarDefaultCl
+import br.com.douglasti.fretefacil.ui.base.collectLatestLifecycleFlow
+import br.com.douglasti.fretefacil.ui.base.setErrorEt
+import br.com.douglasti.fretefacil.ui.base.showToast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class RegisterActivity : ExtensionAppCompactActivity() {
+class RegisterActivity : AppCompatActivity() {
 
     private val bind by lazy { ActivityRegisterBinding.inflate(layoutInflater) }
     private val viewModel: RegisterViewModel by viewModels()
@@ -29,21 +33,21 @@ class RegisterActivity : ExtensionAppCompactActivity() {
     }
 
     private fun handleState() = collectLatestLifecycleFlow(viewModel.registerState) {
-        setErrorEt(bind.etUsername, it.userRequiredErrorMsg?.asString(this))
-        setErrorEt(bind.etPassword, it.passwordRequiredErrorMsg?.asString(this))
+        setErrorEt(bind.etUsername, it.userRequiredErrorMsg)
+        setErrorEt(bind.etPassword, it.passwordRequiredErrorMsg)
 
         when {
             it.passwordConfirmationRequiredErrorMsg != null ->
-                setErrorEt(bind.etPasswordConfirmation, it.passwordConfirmationRequiredErrorMsg.asString(this))
+                setErrorEt(bind.etPasswordConfirmation, it.passwordConfirmationRequiredErrorMsg)
             it.passwordConfirmationDifferentErrorMsg != null ->
-                setErrorEt(bind.etPasswordConfirmation, it.passwordConfirmationDifferentErrorMsg.asString(this))
+                setErrorEt(bind.etPasswordConfirmation, it.passwordConfirmationDifferentErrorMsg)
             else -> setErrorEt(bind.etPasswordConfirmation, null)
         }
 
-        if(it.loading)
+        /*if(it.loading)
             setProgressBarVisibility(View.VISIBLE)
         else
-            setProgressBarVisibility(View.INVISIBLE)
+            setProgressBarVisibility(View.INVISIBLE)*/
 
 
     }

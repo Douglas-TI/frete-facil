@@ -48,13 +48,15 @@ class LoginViewModel @Inject constructor(
     private fun validateFieldsLogin(username: String, password: String): Boolean {
         if(username.isEmpty()) {
             _uiState.update { it.copy(etUsernameError = UiText.StringRes(R.string.required_field)) }
-            return
+            return false
         }
 
         if(username.isEmpty()) {
             _uiState.update { it.copy(etUsernameError = UiText.StringRes(R.string.required_field)) }
-            return
+            return false
         }
+
+        return true
     }
 
     private fun validateUsername(username: String): Boolean {
