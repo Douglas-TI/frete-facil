@@ -22,7 +22,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(bind.root)
 
-        initView()
+        //initView()
     }
 
     private fun initView() {

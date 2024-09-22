@@ -136,10 +136,10 @@
             android:paddingEnd="@dimen/margin_small" />
 
         <TextView
-            android:id="@+id/tv_maitenance_cost"
+            android:id="@+id/tv_general_expenses"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/maitenance"
+            android:text="@string/general_expenses"
             android:textStyle="bold"
             android:theme="@style/TextViewThemeLabel" />
 
@@ -152,24 +152,9 @@
                 android:id="@+id/spinner_maitenance_type"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_weight="1.1"
                 android:autofillHints=""
                 android:theme="@android:style/Theme.Holo.Light.DarkActionBar" />
 
-            <TextView
-                android:id="@+id/tv_of"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.8"
-                android:gravity="center_horizontal"
-                android:text="@string/of"
-                android:textAppearance="@style/TextViewTheme" />
-
-            <AutoCompleteTextView
-                android:id="@+id/autoCompleteTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.1" />
         </LinearLayout>
 
         <LinearLayout
@@ -181,33 +166,38 @@
                 android:id="@+id/et_maitenance_cost"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1.2"
                 android:autofillHints=""
                 android:ems="10"
-                android:hint="@string/value"
+                android:hint="Quantidade(KM)"
                 android:inputType="textPersonName"
                 android:theme="@style/EditTextTheme" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
             <EditText
                 android:id="@+id/et_maitenance_cost_months"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.8"
+                android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
-                android:hint="@string/frequency"
+                android:hint="Custo"
                 android:inputType="textPersonName"
                 android:theme="@style/EditTextTheme" />
 
             <ImageButton
                 android:id="@+id/ib_add_maitenance"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.5"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
                 android:backgroundTint="@color/orange"
-                app:srcCompat="@drawable/ic_baseline_add_32"
-                android:contentDescription="@string/btAdd" />
-
+                android:contentDescription="@string/btAdd"
+                app:srcCompat="@drawable/ic_baseline_add_32" />
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView

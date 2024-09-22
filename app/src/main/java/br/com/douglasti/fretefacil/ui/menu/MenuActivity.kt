@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import br.com.douglasti.fretefacil.data.local.SharedPrefs
 import br.com.douglasti.fretefacil.databinding.ActivityMenuBinding
+import br.com.douglasti.fretefacil.ui.login.LoginActivity
 import br.com.douglasti.fretefacil.ui.vehicle.manage.VehicleManageActivity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -21,16 +22,13 @@ class MenuActivity : AppCompatActivity(), IMenuContract.View {
         bind = ActivityMenuBinding.inflate(layoutInflater)
         setContentView(bind.root)
 
-        val id = intent.getStringExtra("st1")
-        val name = intent.getIntExtra("st2", 0)
-
         loadView()
     }
 
     private fun loadView() {
         setOpenVehicleActivity()
-        title = "Bem vindo " + SharedPrefs.getUser()
-        setBtExit()
+        title = "Frete Fácil " //+ SharedPrefs.getUser()
+        setBtLogin()
     }
 
     private fun setOpenVehicleActivity() {
@@ -38,10 +36,10 @@ class MenuActivity : AppCompatActivity(), IMenuContract.View {
         bind.btVehicle.setOnClickListener { startActivity(intent) }
     }
 
-    private fun setBtExit() {
-        bind.btExit.setOnClickListener {
-            SharedPrefs.setUser("")
-            finish()
+    private fun setBtLogin() {
+        bind.btLogin.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            bind.btLogin.setOnClickListener { startActivity(intent) }
         }
     }
 }

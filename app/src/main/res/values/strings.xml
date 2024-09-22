@@ -11,7 +11,7 @@
     <string name="brand">Marca</string>
     <string name="model">Modelo</string>
     <string name="fuels">Combustíveis</string>
-    <string name="maitenance">Manutenção</string>
+    <string name="general_expenses">Despesas Gerais (Opcional)</string>
     <string name="frequency">Frequência(meses)</string>
     <string name="value">Valor</string>
     <string name="save">Salvar</string>

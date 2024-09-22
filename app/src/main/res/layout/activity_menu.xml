@@ -39,7 +39,7 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/bt_exit"
+                android:id="@+id/bt_login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
